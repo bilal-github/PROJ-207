@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html>
+<!--
+
+This is an html page
+
+-->
+
+<head>
+    <title>Form Page</title>
+    <link rel="stylesheet" href="firstStyleSheet.css">
+    <style>
+        #header {
+            display: flex;
+
+
+            align-items: flex-start;
+        }
+
+        #logoNameID {
+            align-self: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        fieldset {
+            background-color: darkcyan;
+            border-color: midnightblue;
+        }
+
+        legend {
+            color: rgb(22, 6, 2);
+            font-size: 22px;
+            background-color: slategray;
+            font-style: italic;
+        }
+
+        .normal {
+            font-variant: normal;
+        }
+
+        .thick {
+            font-weight: bolder;
+        }
+
+
+
+        #myForm {
+            border-color: lightskyblue;
+            border-style: solid;
+            border-width: 2px;
+        }
+
+        .copyright {
+  text-align: center;
+  bottom: -20;
+}
+
+        [type="text"],
+        [type="date"],
+        [type="email"],
+        [type="password"] {
+            background-color: rgb(217, 247, 160);
+            color: rgb(19, 5, 1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="header">
+
+        <a href="Exercise1.html">
+            <img class="logo" src="travel_logo.png" alt="Travel Agency Logo" width="80px" height="80px" /></a>
+
+        <h1 id="logoNameID"><label class="logoName">Travel Experts</label></h1>
+
+    </header>
+
+    <main>
+        <h2 class="pageTitle">Registration Form</h2>
+
+
+
+        <form id="myForm" method="POST" action="bouncer.php" target="_blank">
+            <fieldset>
+                <legend>Peronal Information</legend>
+
+                <label for="fName">First Name:</label><br />
+                <input type="text" placeholder="First Name" name="fName" id="fName" /><br />
+
+                <label for="lName">Last Name:</label><br />
+                <input type="text" placeholder="Last Name" name="lName" id="lName" /><br />
+
+                <label for="bday">Birthdate:</label><br />
+                <input type="date" name="bday" id="bday" /><br />
+
+                <label for="email">Email:</label><br />
+                <input type="email" name="email" placeholder="Enter your email" id="email" /><br />
+
+                <label for="uName">User Name:</label><br />
+                <input type="text" placeholder="User Name" name="uName" id="uName" /><br />
+
+                <label for="pass">Password (8 Characters Minimum):</label><br />
+                <input type="password" id="password" minlength="8" placeholder="Password" name="Password" /><br />
+
+                <h2>Select Your Gender:</h2>
+                <input type="radio" name="gender" value="male" checked />Male<br />
+                <input type="radio" name="gender" value="female" />Female<br />
+                <input type="radio" name="gender" value="other" />Other<br />
+
+
+                <br />
+                <input type="checkbox" name="terms" id="terms" value="y" required="required" checked />
+                <label for="terms">Agree to Terms of Condition</label>
+                <br /><br />
+
+                <input type="submit" value="Register" />
+                <input type="reset" value="Reset" />
+            </fieldset>
+        </form>
+    </main>
+    <footer>
+        <p class="copyright">Copyright &copy; 2019</p>
+    </footer>
+
+</body>
+
+</html>
