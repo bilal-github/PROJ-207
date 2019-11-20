@@ -1,0 +1,37 @@
+<!--Please copy the following code into the <head> under the <title> in your page-->
+
+<!--Begin block of code-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="css\bootstrap.min.css" />
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+<!--Ends-->
+
+<!--Please insert this block of code into body under the header in your page, This will create the Navigation bar.-->
+<!--Block begins-->
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand justify-content-center" href="index.html"><img src="travel_logo.png"
+                alt="Travel Agency Logo" width="40px" height="40px" />Travel Experts</a>
+        <button class="navbar-toggler justify-content-end" type="button" data-toggle="collapse"
+            data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="Exercise1TestCopy.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register.html">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+<!--Ends-->
