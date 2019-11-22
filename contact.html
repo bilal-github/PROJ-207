@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="stylesheet" href="css\bootstrap.min.css" />
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+        <title>Contact Us</title>
+        <script>
+            // Validate email address to avoid junk emails.
+            function ValidateEmail(inputText){
+                var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if(inputText.value.match(mailformat)){
+                    document.form1.email1.focus();
+                    return true;
+                }
+                else{
+                    alert("Invalid email address!");
+                    document.form1.email1.focus();
+                    return false;
+                }
+            }
+                // Initialize and add the map
+            function initMap() {
+                // The location of Uluru
+                var uluru = {lat: 114.0885, lng: 51.0640};
+                // The map, centered at Uluru
+                var map = new google.maps.Map(
+                    document.getElementById('map'), {zoom: 4, center: uluru});
+                // The marker, positioned at Uluru
+                var marker = new google.maps.Marker({position: uluru, map: map});
+            }
+        </script>
+        <style>
+            .name1{
+                width: 500px;
+                margin-left: 25%;
+                margin-top: 5%;
+            }
+            #map{
+                width: 60%;
+                height: 200px;
+            }
+        </style>
+    </head>
+    <body onload="document.form1.text1.focus()">
+        <section></section>
+
+        <form method="POST" class="name1" name="form1"  action="bouncer.php">
+            <h2>Message us:</h2></br>
+            Name: </br>
+            <input type="text" required/></br>
+            Email Id: </br>
+            <input type="text" name="email1" required/></br>
+            Country: </br>
+            <input type="text" required/></br>
+            City: </br>
+            <input type="text" required/></br>
+            Message: </br>
+            <textarea maxlength="1000" required></textarea></br>
+            <input type="submit" value="send" onclick="return ValidateEmail(document.form1.email1)"/>
+
+            <div id="map"></div>
+            <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQNS6pEQ1FZ9LO6BXMyZHRErZKgutXzR8&callback=initMap">
+            </script>
+        </form>
+    </body>
+</html>
