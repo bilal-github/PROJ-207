@@ -1,0 +1,22 @@
+{
+  "name": "proj-207",
+  "version": "1.0.0",
+  "description": "Travel Website Project",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bilal-github/PROJ-207.git"
+  },
+  "author": "Brian,Bilal,Zoha,Rohit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bilal-github/PROJ-207/issues"
+  },
+  "homepage": "https://github.com/bilal-github/PROJ-207#readme",
+  "dependencies": {
+    "node": "^13.1.0"
+  }
+}
