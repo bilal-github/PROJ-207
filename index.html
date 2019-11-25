@@ -46,10 +46,10 @@ Description: The main entry point for the travel website
         function animatedIntro() {
             blinkingCursor("introText1", 2150);
             setTimeout(() => {
-                textTyping("introText1", "'Live life with no excuses, ", 75);
+                textTyping("introText1", "'Live life with no excuses,", 85);
             }, 2500);
             setTimeout(() => {
-                textTyping("introText1", "travel with no regrets.'", 75, fadeInAndUpButton, fadeInNavBar);
+                textTyping("introText1", " travel with no regrets.'", 85, fadeInAndUpButton, fadeInNavBar);
             }, 5000);
         }
     </script>
@@ -166,7 +166,7 @@ Description: The main entry point for the travel website
         </div>
         <div class="row no-gutters">
             <div class="col-md text-center">
-                <p class="text-center" id="introText1">&nbsp;</p>
+                <p class="text-center" id="introText1">|</p>
                 <button type="button" class="btn btn-outline-dark btn-lg" id="introBtn">Start Your Journey</button>
             </div>
         </div>

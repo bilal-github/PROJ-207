@@ -2,7 +2,7 @@
 //  DATE: Nov 19, 2019
 //  COURSE: CPRG-210-OSD
 //  ASSIGNMENT: THREAD PROJECT - TERM 1
- 
+
 //  Author: Brian Appleton
 //  Description: a script for creating typing effects and cursor blinking effects
 
@@ -21,7 +21,7 @@
  */
 function textTyping(id, text, milliseconds, callback, callback2) {
     var intervalCounter = 0;
-    
+
     var timer = setInterval(() => {
         if (intervalCounter < text.length) {
             document.getElementById(id).innerHTML += text.charAt(intervalCounter);
@@ -30,7 +30,9 @@ function textTyping(id, text, milliseconds, callback, callback2) {
         else {
             if (callback != undefined) {
                 callback();
-                callback2();
+                if (callback2 != undefined) {
+                    callback2();
+                }
             }
             clearInterval(timer);
         }
@@ -43,24 +45,33 @@ function textTyping(id, text, milliseconds, callback, callback2) {
  * @description creates a blinking cursor effect for a given time period in milliseconds
  */
 function blinkingCursor(id, runTime) {
-    var localMilliseconds = 350;
+    var localMilliseconds = 400;
     var millisecondsPassed = 0;
 
     var timer = setInterval(() => {
         millisecondsPassed += localMilliseconds;
-        
+        var text = document.getElementById(id).innerHTML;
+        var length = text.length - 1;
+
         //current interval is the last, stop the timer and set string field to BLANK
         if (millisecondsPassed > runTime) {
+            document.getElementById(id).innerHTML = text.substring(0, length);
             clearInterval(timer);
-            document.getElementById(id).innerHTML = "&nbsp;";
-        }
-        //curent interval is NOT the last proceed with alternative between string charactors
-        else if (document.getElementById(id).innerHTML != "|") {
-            document.getElementById(id).innerHTML = "|";
-        }
+        } 
+        else if (text.endsWith("|")) {
+            document.getElementById(id).innerHTML = text.substring(0, length) + ' ';
+        } 
+        else if (text.endsWith(' ')) {
+            document.getElementById(id).innerHTML = text.substring(0, length) + "|";
+        } 
         else {
-            document.getElementById(id).innerHTML = "&nbsp;";
+            document.getElementById(id).innerHTML = text.substring(0, length + 1) + "|";
         }
+
+
+
+        //curent interval is NOT the last proceed with alternative between string charactors
+
     }, localMilliseconds);
 }
 
