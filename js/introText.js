@@ -1,4 +1,13 @@
 
+//  DATE: Nov 19, 2019
+//  COURSE: CPRG-210-OSD
+//  ASSIGNMENT: THREAD PROJECT - TERM 1
+ 
+//  Author: Brian Appleton
+//  Description: a script for creating typing effects and cursor blinking effects
+
+
+
 /**
  * 
  * @param {String} id the id of the element to change
@@ -6,11 +15,11 @@
  * @param {String} milliseconds ms between displaying the next character in the given string
  * @param {String} mirrorID is a second id which to type to
  * @param {Function} callback is a method that is called when the function has completed displaying the text parameter
- * @param {Function} callbackParam1 paramter for callback
- * * @param {Function} callbackParam2 paramter for callback
+ * @param {Function} callback2 a 2nd callback method
+ * 
  * @description a string is displayed on the screen one charactor at a time which creates a typing effect
  */
-function textTyping(id, text, milliseconds, callback, callbackParam1,callbackParam2) {
+function textTyping(id, text, milliseconds, callback, callback2) {
     var intervalCounter = 0;
     
     var timer = setInterval(() => {
@@ -20,7 +29,8 @@ function textTyping(id, text, milliseconds, callback, callbackParam1,callbackPar
         }
         else {
             if (callback != undefined) {
-                callback(callbackParam1,callbackParam2);
+                callback();
+                callback2();
             }
             clearInterval(timer);
         }
@@ -30,6 +40,7 @@ function textTyping(id, text, milliseconds, callback, callbackParam1,callbackPar
  * 
  * @param {String} the id of the element where the blinking cursor will appear
  * @param {String} runTime length of time in milliseconds the function lasts
+ * @description creates a blinking cursor effect for a given time period in milliseconds
  */
 function blinkingCursor(id, runTime) {
     var localMilliseconds = 350;
@@ -52,7 +63,5 @@ function blinkingCursor(id, runTime) {
         }
     }, localMilliseconds);
 }
-/**
- * 
- */
+
 

@@ -1,9 +1,10 @@
-<!-- Image Credits
-
-    authors of photos used on this page require no attribution however their links are here:
-
-https://www.pexels.com/photo/white-airliner-wing-on-top-of-sea-clouds-2007401/
-
+<!-- 
+DATE: Nov 19, 2019
+COURSE: CPRG-210-OSD
+ASSIGNMENT: THREAD PROJECT - TERM 1
+ 
+Author: Brian Appleton
+Description: The main entry point for the travel website
 -->
 
 <!DOCTYPE html>
@@ -11,7 +12,7 @@ https://www.pexels.com/photo/white-airliner-wing-on-top-of-sea-clouds-2007401/
 
 <head>
     <Title>
-        Travel Experts |
+        Travel Experts | Go Further.
     </Title>
 
     <!-- Begin block of code-->
@@ -35,7 +36,11 @@ https://www.pexels.com/photo/white-airliner-wing-on-top-of-sea-clouds-2007401/
     <script>
         function fadeInAndUpButton() {
             document.getElementById("introBtn").style.opacity = "1.0";
-            document.getElementById("introBtn").style.marginTop = "70px";
+            document.getElementById("introBtn").style.marginTop = "0";
+        }
+
+        function fadeInNavBar() {
+            document.getElementById("navBar").style.opacity = "1.0";
         }
 
         function animatedIntro() {
@@ -44,7 +49,7 @@ https://www.pexels.com/photo/white-airliner-wing-on-top-of-sea-clouds-2007401/
                 textTyping("introText1", "'Live life with no excuses, ", 75);
             }, 2500);
             setTimeout(() => {
-                textTyping("introText1", "travel with no regrets.'", 75, fadeInAndUpButton);
+                textTyping("introText1", "travel with no regrets.'", 75, fadeInAndUpButton, fadeInNavBar);
             }, 5000);
         }
     </script>
@@ -55,19 +60,24 @@ https://www.pexels.com/photo/white-airliner-wing-on-top-of-sea-clouds-2007401/
     </script>
 
     <style>
-        nav {
-            opacity: 0.5;
-        }
-
         body {
             margin: 0;
             background-color: rgb(204, 204, 204);
         }
 
+        #navBar {
+            transition: opacity 1s;
+            opacity: 0.3;
+        }
+
+        #navBar:hover {
+            opacity: 1.0;
+        }
+
         #introBtn {
             /* hide and position button prior to being displayed */
             margin-top: 250px;
-            transition: opacity 8s, margin-top 3s;
+            transition: opacity 3s, margin-top 3s;
             opacity: 0;
         }
 
@@ -83,8 +93,8 @@ https://www.pexels.com/photo/white-airliner-wing-on-top-of-sea-clouds-2007401/
         }
 
         #introBtn {
-                font-size: 2.5rem;
-            }
+            font-size: 2.5rem;
+        }
 
         /* Large Screens */
         @media screen and (max-height: 1900px) {
@@ -105,8 +115,8 @@ https://www.pexels.com/photo/white-airliner-wing-on-top-of-sea-clouds-2007401/
         /* Small Screens */
         @media screen and (max-height: 840px) {
             #introImage {
-                width:180%;
-                margin-left:-40%;
+                width: 250%;
+                margin-left: -75%;
             }
 
             #introText1 {
@@ -116,6 +126,26 @@ https://www.pexels.com/photo/white-airliner-wing-on-top-of-sea-clouds-2007401/
 
             #introBtn {
                 font-size: 1.5rem;
+            }
+        }
+
+        /* X-Small Screens */
+        @media screen and (max-height: 609px) {
+            #introImage {
+                width: 200%;
+                height:170%;
+                margin-top:auto;
+                margin-left: -50%;
+            }
+
+            #introText1 {
+                margin-top: 2rem;
+                font-size: 2rem;
+            }
+
+            #introBtn {
+                font-size: 1.0rem;
+                background-color: rgba(236, 230, 230, 0.863);
             }
         }
     </style>
@@ -130,14 +160,14 @@ https://www.pexels.com/photo/white-airliner-wing-on-top-of-sea-clouds-2007401/
                 <img id="introImage" src="./images/indexSlide1.jpg" />
 
                 <!--Header & Navigation -->
-                <section></section>
+                <section id="navBar"></section>
                 <!--Ends-->
             </div>
         </div>
         <div class="row no-gutters">
             <div class="col-md text-center">
                 <p class="text-center" id="introText1">&nbsp;</p>
-                <button type="button" class="btn btn-primary btn-lg" id="introBtn">Start Your Journey</button>
+                <button type="button" class="btn btn-outline-dark btn-lg" id="introBtn">Start Your Journey</button>
             </div>
         </div>
         <div class="row no-gutters">
