@@ -10,177 +10,180 @@ Description: The main entry point for the travel website
 <!DOCTYPE html>
 <html>
 
-<head>
-    <Title>
-        Travel Experts | Go Further.
-    </Title>
+    <head>
+        <Title>
+            Travel Experts | Go Further.
+        </Title>
 
-    <!-- Begin block of code-->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Begin block of code-->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="css\bootstrap.min.css" />
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css\bootstrap.min.css" />
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
 
-    <!-- Imported Scripts -->
-    <script src="navBarHTML.js"></script>
-    <script src="js/imageSlide.js"></script>
-    <script src="js/introText.js"></script>
+        <!-- Imported Scripts -->
+        <script src="navBarHTML.js"></script>
+        <script src="js/TextAnimation.js"></script>
 
-    <!-- Functions -->
-    <script>
-        function fadeInAndUpButton() {
-            document.getElementById("introBtn").style.opacity = "1.0";
-            document.getElementById("introBtn").style.marginTop = "0";
-            document.getElementById("introBtn").style.marginTop = "0";
-        }
-
-        function fadeInNavBar() {
-            document.getElementById("navBar").style.opacity = "1.0";
-        }
-
-        function animatedIntro() {
-            blinkingCursor("introText1", 2150);
-            setTimeout(() => {
-                textTyping("introText1", "'Live life with no excuses,", 75);
-            }, 2500);
-            setTimeout(() => {
-                textTyping("introText1", " travel with no regrets.'", 75, fadeInAndUpButton, fadeInNavBar);
-            }, 5500);
-        }
-    </script>
-
-    <!-- Runtime Scripts-->
-    <script>
-        $('#body').ready(animatedIntro());
-    </script>
-
-    <style>
-        body {
-            margin: 0;
-            background-color: rgb(204, 204, 204);
-        }
-
-        #navBar {
-            transition: opacity 1s;
-            opacity: 0.3;
-        }
-
-        #navBar:hover {
-            opacity: 1.0;
-        }
-
-        #introBtn {
-            /* hide and position button prior to being displayed */
-            margin-top: 250px;
-            transition: opacity 3s, margin-top 3s; background-color: 3s;
-            opacity: 0;
-        }
-
-        #introText1 {
-            font-family: 'Indie Flower', cursive;
-            
-        }
-
-        #introImage {
-            width: 100%;
-            min-height: 100%;
-            max-height: 100%;
-            position: fixed;
-        }
-
-        #introBtn {
-            font-size: 2.5rem;
-        }
-
-        /* Large Screens */
-        @media screen and (min-width : 1440px) and (max-height: 1080px) and (min-height:1040px){
-            #introText1 {
-                margin-top: 3rem;
-                font-size: 5rem;
+        <!-- Functions -->
+        <script>
+            //fades in and UP the main button
+            function fadeInAndUpButton() {
+                document.getElementById("introBtn").style.opacity = "1.0";
+                document.getElementById("introBtn").style.marginTop = "0";
+                document.getElementById("introBtn").style.marginTop = "0";
             }
-        }
-
-        /* Medium Screens */
-        @media screen and (max-width : 1364px) and (max-height: 1366px) {
-            #introImage {
-                width: 180%;
-                margin-left: -40%;
+            //fades in the Navigation bar
+            function fadeInNavBar() {
+                document.getElementById("navBar").style.opacity = "1.0";
             }
-            #introText1 {
-                margin-top: 2rem;
-                font-size: 4.5rem;
+            //creates the main animation on the page0
+            function animatedIntro() {
+                blinkingCursor("introText", 2150);
+                setTimeout(() => {
+                    textTyping("introText", "'Live life with no excuses,", 75);
+                }, 2500);
+                setTimeout(() => {
+                    textTyping("introText", " travel with no regrets.'", 75, fadeInAndUpButton, fadeInNavBar);
+                }, 5500);
             }
-        }
+        </script>
 
-        /* Small Screens */
-        @media screen and (max-height: 840px) and (max-width: 650px) {
-            #introImage {
-                width: 300%;
-                margin-left: -100%;
+        <!-- Runtime Scripts-->
+        <script>
+            $('#body').ready(animatedIntro());
+        </script>
+
+        <style>
+            body {
+                margin: 0;
+                background-color: rgb(204, 204, 204);
             }
 
-            #introText1 {
-                margin-top: 2rem;
-                font-size: 2rem;
+            #navBar {
+                transition: opacity 1s;
+                opacity: 0.3;
+            }
+
+            #navBar:hover {
+                opacity: 1.0;
             }
 
             #introBtn {
-                font-size: 1.5rem;
+                /* hide and position button prior to being displayed */
+                margin-top: 250px;
+                transition: opacity 3s, margin-top 3s;
+                background-color: 3s;
+                opacity: 0;
             }
-        }
 
-        /* X-Small Screens */
-        @media screen and (max-height: 609px) {
+            #introText {
+                font-family: 'Indie Flower', cursive;
+            }
+
             #introImage {
-                width: 300%;
-                margin-left: -100%;
-            }
-
-            #introText1 {
-                margin-top: 2rem;
-                font-size: 2rem;
+                width: 100%;
+                min-height: 100%;
+                max-height: 100%;
+                position: fixed;
             }
 
             #introBtn {
-                font-size: 1.0rem;
-                background-color: rgba(236, 230, 230, 0.863);
+                font-size: 2.5rem;
             }
-        }
-    </style>
-</head>
 
-<body>
-    <div class="container-fluid p-0">
-        <div class="row no-gutters">
-            <div class="col-md">
+            /* Large Screens - Targetted: Desktops/Laptops */
+            @media screen and (min-width: 1364px)  {
+                #introText {
+                    margin-top: 3rem;
+                    font-size: 5rem;
+                }
+           
+            }
 
-                <!-- Background Image -->
-                <img id="introImage" src="./images/indexSlide1.jpg" />
+            /* Medium Screens  - Targetted: Ipads / Laptops  */
+            @media screen and (min-width: 1024px) {
+                #introImage {
+                    width: 180%;
+                    margin-left: -40%;
+                }
 
-                <!--Header & Navigation -->
-                <section id="navBar"></section>
-                <!--Ends-->
+                #introText {
+                    margin-top: 2rem;
+                    font-size: 4.5rem;
+                }
+            }
+
+            /* Small Screens  - Targetted: Phones  */
+            @media screen and (max-height: 840px) {
+                #introImage {
+                    width: 300%;
+                    margin-left: -100%;
+                }
+
+                #introText {
+                    margin-top: 2rem;
+                    font-size: 2rem;
+                }
+
+                #introBtn {
+                    font-size: 1.5rem;
+                }
+            }
+
+            /* X-Small Screens - Targetted: Phones  */
+            @media screen and (max-height: 610px) {
+                #introImage {
+                    width: 300%;
+                    margin-left: -100%;
+                }
+
+                #introText {
+                    margin-top: 2rem;
+                    font-size: 2rem;
+                    color: orange;
+                }
+
+                #introBtn {
+                    font-size: 1.0rem;
+                    background-color: rgba(236, 230, 230, 0.863);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container-fluid p-0">
+            <div class="row no-gutters">
+                <div class="col-md">
+
+                    <!-- Background Image -->
+                    <img id="introImage" src="./images/indexIntroImage.jpg" />
+
+                    <!--Header & Navigation -->
+                    <section id="navBar"></section>
+                    <!--Ends-->
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-md text-center">
+                    <p class="text-center" id="introText">|</p>
+                    <button type="button" class="btn btn-outline-dark btn-lg" id="introBtn">Start Your Journey</button>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-md text-center">
+
+                </div>
             </div>
         </div>
-        <div class="row no-gutters">
-            <div class="col-md text-center">
-                <p class="text-center" id="introText1">|</p>
-                <button type="button" class="btn btn-outline-dark btn-lg" id="introBtn">Start Your Journey</button>
-            </div>
         </div>
-        <div class="row no-gutters">
-            <div class="col-md text-center">
-
-            </div>
-        </div>
-    </div>
-    </div>
-</body>
+    </body>
 
 </html>

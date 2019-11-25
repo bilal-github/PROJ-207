@@ -1,11 +1,13 @@
-/**
+/**  
  * DATE: Nov 19, 2019
  * COURSE: CPRG-210-OSD
- * ASSIGNMENT: Day 1 - 7 Exercises
+ * ASSIGNMENT: THREADED PROJECT - TERM 1
  * 
  * @author Brian Appleton
  * @description Used to dynamically load images to the webpage and navigate between those images.
  */
+
+
 
 /**@description tracks the current index of the images being displayed */
 var selectedImageNumber = -1;

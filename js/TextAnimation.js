@@ -1,7 +1,7 @@
 
 //  DATE: Nov 19, 2019
 //  COURSE: CPRG-210-OSD
-//  ASSIGNMENT: THREAD PROJECT - TERM 1
+//  ASSIGNMENT: THREADED PROJECT - TERM 1
 
 //  Author: Brian Appleton
 //  Description: a script for creating typing effects and cursor blinking effects
