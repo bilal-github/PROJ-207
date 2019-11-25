@@ -22,21 +22,36 @@ https://www.pexels.com/photo/white-airliner-wing-on-top-of-sea-clouds-2007401/
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <!--Ends -->
 
-    <!-- <Font> -->
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
 
-    <!-- Scripts -->
+    <!-- Imported Scripts -->
     <script src="navBarHTML.js"></script>
     <script src="js/imageSlide.js"></script>
     <script src="js/introText.js"></script>
-    <script>
-        // Startup Tasks
-        preloadImages();
 
-        blinkingCursor("introText1", 2250);
-        setTimeout(startTyping, 2500);
+    <!-- Functions -->
+    <script>
+        function fadeInAndUpButton() {
+            document.getElementById("introBtn").style.opacity = "1.0";
+            document.getElementById("introBtn").style.marginTop = "70px";
+        }
+
+        function animatedIntro() {
+            blinkingCursor("introText1", 2150);
+            setTimeout(() => {
+                textTyping("introText1", "'Live life with no excuses, ", 75);
+            }, 2500);
+            setTimeout(() => {
+                textTyping("introText1", "travel with no regrets.'", 75, fadeInAndUpButton);
+            }, 5000);
+        }
+    </script>
+
+    <!-- Runtime Scripts-->
+    <script>
+        $('#body').ready(animatedIntro());
     </script>
 
     <style>
@@ -44,45 +59,75 @@ https://www.pexels.com/photo/white-airliner-wing-on-top-of-sea-clouds-2007401/
             opacity: 0.5;
         }
 
-
         body {
             margin: 0;
+            background-color: rgb(204, 204, 204);
+        }
 
-        }
-        #btnDiscover {
-            margin-top:200px;
+        #introBtn {
+            /* hide and position button prior to being displayed */
+            margin-top: 250px;
             transition: opacity 8s, margin-top 3s;
-            opacity:0;
-            
+            opacity: 0;
         }
+
         #introText1 {
-            margin-top: 4vw;
             font-family: 'Indie Flower', cursive;
         }
-        #btnDiscover:hover {
-            font-size: 1.2rem;
-        }
-        #imageSlide {
-            z-index: -1;
-            position: fixed;
+
+        #introImage {
             width: 100%;
-            max-height: 100rem;
-            min-height: 60rem;
+            min-height: 100%;
+            max-height: 100%;
+            position: fixed;
+        }
+
+        #introBtn {
+                font-size: 2.5rem;
+            }
+
+        /* Large Screens */
+        @media screen and (max-height: 1900px) {
+            #introText1 {
+                margin-top: 3rem;
+                font-size: 4rem;
+            }
+        }
+
+        /* Medium Screens */
+        @media screen and (max-height: 1440px) {
+            #introText1 {
+                margin-top: 3rem;
+                font-size: 4rem;
+            }
+        }
+
+        /* Small Screens */
+        @media screen and (max-height: 840px) {
+            #introImage {
+                width:180%;
+                margin-left:-40%;
+            }
+
+            #introText1 {
+                margin-top: 2rem;
+                font-size: 2rem;
+            }
+
+            #introBtn {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 
-<body onLoad="nextImage();">
-
-
-
-
+<body>
     <div class="container-fluid p-0">
         <div class="row no-gutters">
             <div class="col-md">
 
                 <!-- Background Image -->
-                <img id="imageSlide" />
+                <img id="introImage" src="./images/indexSlide1.jpg" />
 
                 <!--Header & Navigation -->
                 <section></section>
@@ -91,8 +136,13 @@ https://www.pexels.com/photo/white-airliner-wing-on-top-of-sea-clouds-2007401/
         </div>
         <div class="row no-gutters">
             <div class="col-md text-center">
-                <h1 class="text-center" id="introText1">&nbsp;</h1>
-                <button type="button" class="btn btn-primary" id="btnDiscover">Discover Now</button>
+                <p class="text-center" id="introText1">&nbsp;</p>
+                <button type="button" class="btn btn-primary btn-lg" id="introBtn">Start Your Journey</button>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-md text-center">
+
             </div>
         </div>
     </div>
