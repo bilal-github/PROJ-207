@@ -99,37 +99,34 @@ Description: The main entry point for the travel website
             }
 
             /* Large Screens - Targetted: Desktops/Laptops */
-            @media screen and (min-width: 1364px)  {
+            @media screen and (min-width: 1300px) {
                 #introText {
                     margin-top: 3rem;
                     font-size: 5rem;
                 }
-           
-            }
 
-            /* Medium Screens  - Targetted: Ipads / Laptops  */
-            @media screen and (min-width: 1024px) {
-                #introImage {
-                    width: 180%;
-                    margin-left: -40%;
-                }
-
+            /* Medium Screens  - Targetted: Ipads  */
+            @media screen and (max-width: 1024px) {
                 #introText {
                     margin-top: 2rem;
                     font-size: 4.5rem;
                 }
-            }
 
+                #introImage {
+                    width: 180%;
+                    margin-left: -40%;
+                }
+            }
             /* Small Screens  - Targetted: Phones  */
             @media screen and (max-height: 840px) {
-                #introImage {
-                    width: 300%;
-                    margin-left: -100%;
-                }
-
                 #introText {
                     margin-top: 2rem;
                     font-size: 2rem;
+                }
+
+                #introImage {
+                    width: 300%;
+                    margin-left: -100%;
                 }
 
                 #introBtn {
@@ -139,15 +136,15 @@ Description: The main entry point for the travel website
 
             /* X-Small Screens - Targetted: Phones  */
             @media screen and (max-height: 610px) {
-                #introImage {
-                    width: 300%;
-                    margin-left: -100%;
-                }
-
                 #introText {
                     margin-top: 2rem;
                     font-size: 2rem;
                     color: orange;
+                }
+
+                #introImage {
+                    width: 300%;
+                    margin-left: -100%;
                 }
 
                 #introBtn {
