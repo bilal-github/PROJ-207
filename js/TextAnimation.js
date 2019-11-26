@@ -44,10 +44,10 @@ function textTyping(id, text, milliseconds, callback, callback2) {
  * @param {String} runTime length of time in milliseconds the function lasts
  * @description creates a blinking cursor effect for a given time period in milliseconds
  */
-function blinkingCursor(id, runTime) {
+function blinkingCursor(id, runTime, callback) {
     var localMilliseconds = 400;
     var millisecondsPassed = 0;
-
+    
     var timer = setInterval(() => {
         millisecondsPassed += localMilliseconds;
         var text = document.getElementById(id).innerHTML;
@@ -57,6 +57,9 @@ function blinkingCursor(id, runTime) {
         if (millisecondsPassed > runTime) {
             document.getElementById(id).innerHTML = text.substring(0, length);
             clearInterval(timer);
+            if (callback != undefined) {
+                callback();
+            }
         } 
         else if (text.endsWith("|")) {
             document.getElementById(id).innerHTML = text.substring(0, length) + ' ';
@@ -67,9 +70,6 @@ function blinkingCursor(id, runTime) {
         else {
             document.getElementById(id).innerHTML = text.substring(0, length + 1) + "|";
         }
-
-
-
         //curent interval is NOT the last proceed with alternative between string charactors
 
     }, localMilliseconds);
