@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var myData;
 
 // set the view engine to ejs
 app.set('view engine', 'pug');
@@ -8,7 +9,11 @@ app.set('view engine', 'pug');
 
 // index page 
 app.get('/', function(req, res) {
-    res.sendFile("./index.html");
+    res.sendFile("./views/index.html");
+});
+
+app.get('/indexPackages', function(req, res) {
+    res.send(myData);
 });
 
 app.listen(8000);
