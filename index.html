@@ -43,14 +43,21 @@ Description: The main entry point for the travel website
         function fadeInNavBar() {
             document.getElementById("navBar").style.opacity = "1.0";
         }
-        //creates the main animation on the page0
+        //creates the introduction animation on page load.
         function animatedIntro() {
-            blinkingCursor("introText", 2150, () => {
-                textTyping("introText", "'Live life with no excuses,", 75, () => {
+            var blinkingCursorRunTime = 1900;
+            var delayBetweenCharsTyped = 75;
+            var delayBetweenSentences = 1000;
+            var sentenceOne = "'Live life with no excuses,";
+            var sentenceTwo = " travel with no regrets.'"
+            var elementId = "introText";
+
+            blinkingCursor(elementId, blinkingCursorRunTime, () => {
+                textTyping(elementId, sentenceOne , delayBetweenCharsTyped, () => {
                     setTimeout(() => {
-                        textTyping("introText", " travel with no regrets.'", 75,
+                        textTyping(elementId, sentenceTwo, delayBetweenCharsTyped,
                             fadeInAndUpButton, fadeInNavBar);
-                    }, 1000);
+                    }, delayBetweenSentences);
                 });
             });
         }
