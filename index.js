@@ -1,19 +1,40 @@
 var express = require('express');
 var app = express();
+const mysql = require("mysql");
 var myData;
 
-// set the view engine to ejs
-app.set('view engine', 'pug');
-
-// use res.render to load up an ejs view file
-
-// index page 
-app.get('/', function(req, res) {
-    res.sendFile("./views/index.html");
+var con = mysql.createConnection({
+    host: "localhost",
+    user: "brian",
+    password: "condor20",
+    database: "travelexperts"
 });
 
-app.get('/indexPackages', function(req, res) {
-    res.send(myData);
+//establishes the SQL connection
+con.connect((err) => {
+    if (err) throw err;
+})
+
+app.use(express.static("images"));
+app.use(express.static("js"));
+app.use(express.static("css"));
+app.use(express.urlencoded({ extended: true }));
+
+// index page 
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + "/views/index.html");
+});
+
+//Serves back the SQL PkgName column from the PACKAGES table in SQL
+app.get('/getVacationPackages', function (req, res) {
+    var vacationData;
+
+    var sqlState1 = "SELECT PkgDesc FROM packages"
+
+    con.query(sqlState1, (err, result, fields) => {
+        if (err) throw err;
+        res.send(result);
+    });
 });
 
 app.listen(8000);
