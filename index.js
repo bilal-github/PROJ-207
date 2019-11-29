@@ -13,14 +13,14 @@ var con = mysql.createConnection({
 //establishes the SQL connection
 con.connect((err) => {
     if (err) throw err;
-})
+});
 
 app.use(express.static("images"));
 app.use(express.static("js"));
 app.use(express.static("css"));
 app.use(express.urlencoded({ extended: true }));
 
-// index page 
+//serves out the index page 
 app.get('/', function (req, res) {
     res.sendFile(__dirname + "/views/index.html");
 });

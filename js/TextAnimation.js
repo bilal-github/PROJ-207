@@ -1,12 +1,10 @@
-
-//  DATE: Nov 19, 2019
-//  COURSE: CPRG-210-OSD
-//  ASSIGNMENT: THREADED PROJECT - TERM 1
-
-//  Author: Brian Appleton
-//  Description: a script for creating typing effects and cursor blinking effects
-
-
+/**
+ * DATE: Nov 19, 2019
+ * COURSE: CPRG-210-OSD
+ * ASSIGNMENT: THREADED PROJECT - TERM 1
+ * @author: Brian Appleton
+ * @description: a script for creating typing effects and cursor blinking effects
+ */
 
 /**
  * 
@@ -40,9 +38,10 @@ function textTyping(id, text, milliseconds, callback, callback2) {
 }
 /**
  * 
- * @param {String} the id of the element where the blinking cursor will appear
+ * @param {String} id the id of the element where the blinking cursor will appear
  * @param {String} runTime length of time in milliseconds the function lasts
- * @description creates a blinking cursor effect for a given time period in milliseconds
+ * @param {Function} callback a callback function
+ * @description creates a blinking cursor effect on a given string for a specified time period in milliseconds
  */
 function blinkingCursor(id, runTime, callback) {
     var localMilliseconds = 400;
@@ -70,7 +69,7 @@ function blinkingCursor(id, runTime, callback) {
         else {
             document.getElementById(id).innerHTML = text.substring(0, length + 1) + "|";
         }
-        //curent interval is NOT the last proceed with alternative between string charactors
+
 
     }, localMilliseconds);
 }

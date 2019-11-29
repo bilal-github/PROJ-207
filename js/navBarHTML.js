@@ -7,20 +7,20 @@ $(document).ready(function() {
         <span class="navbar-toggler-icon"></span>\
     </button>\
     <div class="collapse navbar-collapse" id="collapsibleNavbar">\
-        <ul class="navbar-nav">\
-            <li class="nav-item">\
-                <a class="nav-link" href="index.html">Home</a>\
-            </li>\
-            <li class="nav-item">\
-                <a class="nav-link" href="Contact-details.html">Contact Us</a>\
-            </li>\
-            <li class="nav-item">\
-            <li class="nav-item">\
-                <a class="nav-link" href="Vacation.html">Vacation</a>\
-            </li>\
-                <a class="nav-link" href="CustomerRegistration-Copy.html">Register</a>\
-            </li>\
-        </ul>\
+        <div class="navbar-nav" width="100%">\
+                <a class="nav-link" href="index.html">\
+                <img src="plane.png">\
+                Home</a>\
+                <a class="nav-link" href="Contact-details.html">\
+                <img src="card.png">\
+                Contact Us</a>\
+                <a class="nav-link" href="Vacation.html">\
+                <img src="book.png">\
+                Book Vacation</a>\
+                <a class="nav-link" href="CustomerRegistration-Copy.html">\
+                <img src="register.png">\
+                Sign Up</a>\
+        </div>\
     </div>\
 </nav>';
   $("section").append(navBarHTML);

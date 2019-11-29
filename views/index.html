@@ -9,7 +9,6 @@ Description: The main entry point for the travel website
 
 <!DOCTYPE html>
 <html>
-
     <head>
         <Title>
             Travel Experts | Go Further.
@@ -34,24 +33,20 @@ Description: The main entry point for the travel website
 
         <!-- Functions -->
         <script>
-            console.log("Log it1");
+            $('#body').ready(animatedIntro());
+
             //display package data on the screen
-            getVacationTablePackages((data) => {
+            getHttpRequest("/getVacationPackages",(data) => {
                 var fileData = JSON.parse(data);
-                
-                alert(fileData[0].PkgDesc);
                 document.getElementById("packagesText").innerHTML = fileData[0].PkgDesc
-                document.getElementById("packagesText").style.opacity = "1.0";
             });
             function fadeInTextTransitions() {
                 //fades in and UP the main button
                 document.getElementById("introBtn").style.opacity = "1.0";
                 document.getElementById("introBtn").style.marginTop = "0";
-                document.getElementById("introBtn").style.marginTop = "0";
 
-                //fades in the Navbar
-                document.getElementById("navBar").style.opacity = "1.0";
-
+                //fade in the Vacation Packages
+                document.getElementById("packagesText").style.opacity = "0.5";
 
             }
             //creates the introduction animation on page load.
@@ -76,30 +71,15 @@ Description: The main entry point for the travel website
                 });
             }
         </script>
-
-        <!-- Runtime Scripts-->
-        <script>
-            $('#body').ready(animatedIntro());
-
-
-
-        </script>
-
         <style>
             body {
                 margin: 0;
                 background-color: rgb(204, 204, 204);
             }
-
-            #navBar {
-                transition: opacity 1s;
-                opacity: 0.3;
+            #navBar img {
+                width: 1.5rem;
+                height: 1.5rem;
             }
-
-            #navBar:hover {
-                opacity: 1.0;
-            }
-
             #introBtn {
                 /* hide and position button prior to transitioning in and being displayed */
                 margin-top: 250px;
@@ -107,32 +87,29 @@ Description: The main entry point for the travel website
                 background-color: 3s;
                 opacity: 0;
             }
-
             #introText {
                 font-family: 'Indie Flower', cursive;
                 z-index: 2;
             }
-
             #introImage {
                 width: 100%;
                 min-height: 100%;
                 max-height: 100%;
                 position: fixed;
             }
-
             #packagesText {
                 font-size: 2.0rem;
+                color: black;
+                background-image: url("texture.jpg");
                 transition: opacity 3s;
                 opacity: 0;
                 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             }
-
             #introBtn {
                 font-size: 2.5rem;
                 border-radius: 40px;
                 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             }
-
             /* Large Screens - Targetted: Desktops/Laptops */
             @media screen and (min-width: 1024px) {
                 #introText {
@@ -140,37 +117,31 @@ Description: The main entry point for the travel website
                     font-size: 5.5rem;
                 }
             }
-
             /* Medium Screens  - Targetted: Ipads  */
             @media screen and (max-width: 1024px) {
                 #introText {
                     margin-top: 2rem;
                     font-size: 4.5rem;
                 }
-
                 #introImage {
                     width: 180%;
                     margin-left: -40%;
                 }
             }
-
             /* Small Screens  - Targetted: Phones  */
             @media screen and (max-height: 840px) and (max-width: 420px) {
                 #introText {
                     margin-top: 2rem;
                     font-size: 2rem;
                 }
-
                 #introImage {
                     width: 300%;
                     margin-left: -100%;
                 }
-
                 #introBtn {
                     font-size: 1.5rem;
                 }
             }
-
             /* X-Small Screens - Targetted: Phones  */
             @media screen and (max-height: 610px) and (max-width: 420px) {
                 #introText {
@@ -198,7 +169,6 @@ Description: The main entry point for the travel website
 
                     <!-- Background Image -->
                     <img id="introImage" src="indexIntroImage.jpg" />
-
                     <!--Header & Navigation -->
                     <section id="navBar"></section>
 
@@ -207,8 +177,9 @@ Description: The main entry point for the travel website
             <div class="row no-gutters">
                 <div class="col-md text-center">
                     <p class="text-center" id="introText">|</p>
-                    <p class="text-center" id="packagesText">some random text</p>
                     <button type="button" class="btn btn-dark btn-lg" id="introBtn">Start Your Journey</button>
+                    <p class="text-center" id="packagesText" >some random text</p>
+                    
                 </div>
             </div>
             <div class="row no-gutters justify-content-center">
