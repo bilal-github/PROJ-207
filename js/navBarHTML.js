@@ -1,5 +1,4 @@
 $(document).ready(function() {
- // $("header").append("<hr>");
   var navBarHTML =
     '<nav class="navbar navbar-expand-md bg-dark navbar-dark">\
     <button class="navbar-toggler justify-content-end" type="button" data-toggle="collapse"\
