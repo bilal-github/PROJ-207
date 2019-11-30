@@ -2,7 +2,6 @@ var express = require('express');
 var app = express();
 const mysql = require("mysql");
 
-<input type="text" pattern=""
 var con = mysql.createConnection({
     host: "localhost",
     user: "brian",
