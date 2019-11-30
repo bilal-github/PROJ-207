@@ -5,7 +5,7 @@ $(document).ready(function() {
         data-target="#collapsibleNavbar">\
         <span class="navbar-toggler-icon"></span>\
     </button>\
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">\
+    <div class="collapse navbar-collapse" id="collapsibleNavbar" >\
         <div class="navbar-nav" width="100%">\
                 <a class="nav-link" href="index.html">\
                 <img src="plane.png">\
