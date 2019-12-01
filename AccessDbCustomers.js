@@ -49,13 +49,13 @@ app.post("/post_form", (req, res) => {
     data[11] = req.body.userPassword;
 
 
-  
+
     var userNameQuery = "SELECT `UserName` FROM customers WHERE `UserName` = '" + req.body.UserName + "'";
     var sqlInsert =
-    "INSERT INTO `customers`(`CustFirstName`, `CustLastName`, `CustAddress`, `CustCity`, `CustProv`,"
-    + " `CustPostal`, `CustCountry`, `CustHomePhone`, `CustBusPhone`, `CustEmail`, `UserName`,`UserPassword`)"
-    + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
- 
+        "INSERT INTO `customers`(`CustFirstName`, `CustLastName`, `CustAddress`, `CustCity`, `CustProv`,"
+        + " `CustPostal`, `CustCountry`, `CustHomePhone`, `CustBusPhone`, `CustEmail`, `UserName`,`UserPassword`)"
+        + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+
     conn.query(userNameQuery, data, (err, results, fields) => {
         if (err) throw console.log(err);
         console.log(results);
@@ -72,7 +72,7 @@ app.post("/post_form", (req, res) => {
             });
         }
     })
- 
+
 });
 
 app.post("/post_loginForm", (req, res) => {
