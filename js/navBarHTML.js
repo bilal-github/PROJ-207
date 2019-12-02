@@ -1,11 +1,11 @@
 $(document).ready(function() {
-var navBarHTML =
+  var navBarHTML =
     '<nav class="navbar navbar-expand-md bg-dark navbar-dark">\
     <button class="navbar-toggler justify-content-end" type="button" data-toggle="collapse"\
         data-target="#collapsibleNavbar">\
         <span class="navbar-toggler-icon"></span>\
     </button>\
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">\
+    <div class="collapse navbar-collapse" id="collapsibleNavbar" >\
         <div class="navbar-nav" width="100%">\
                 <a class="nav-link" href="index.html">\
                 <img src="plane.png">\
