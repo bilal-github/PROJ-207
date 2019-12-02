@@ -4,14 +4,14 @@ const mysql = require("mysql");
 
 const bodyParser = require("body-parser");
 
-var con = mysql.createConnection({
+var conn = mysql.createConnection({
     host: "localhost",
     user: "Bilal",
     database: "travelexperts"
 });
 
 //establishes the SQL connection
-con.connect((err) => {
+conn.connect((err) => {
     if (err) throw err;
 });
 app.use(express.static('./Views', { extensions: ['html'] }));
@@ -36,7 +36,7 @@ app.get('/getVacationPackages', function (req, res) {
 
     var sqlState1 = "SELECT PkgDesc FROM packages"
 
-    con.query(sqlState1, (err, result, fields) => {
+    conn.query(sqlState1, (err, result, fields) => {
         if (err) throw err;
         res.send(result);
     });
@@ -101,19 +101,18 @@ app.post("/post_loginForm", (req, res) => {
     var UserName = req.body.uNameLogin;
     var Password = req.body.passwordLogin;
 
-    conn.connect(err => {
-        if (err) throw err;
-        conn.query("SELECT * FROM customers WHERE `UserName` = ? AND `UserPassword` = ?", [UserName, Password], (err, results, fields) => {
-            if (err) {
-                console.log("Error occured in conn.query");
+
+    conn.query("SELECT * FROM customers WHERE `UserName` = ? AND `UserPassword` = ?", [UserName, Password], (err, results, fields) => {
+        if (err) {
+            console.log("Error occured in conn.query");
+        } else {
+            if (results.length > 0) {
+                console.log("login Successful");
+                res.redirect("index");
             } else {
-                if (results.length > 0) {
-                    console.log("login Successful");
-                    res.redirect("index");
-                } else {
-                    console.log("Username not found: please register");
-                }
+                console.log("Username not found: please register");
             }
-        });
+        }
     });
+
 })

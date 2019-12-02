@@ -16,7 +16,7 @@ $(document).ready(function() {
                 <a class="nav-link" href="Vacation.html">\
                 <img src="book.png">\
                 Book Vacation</a>\
-                <a class="nav-link" href="CustomerRegistration-Copy.html">\
+                <a class="nav-link" href="Registration.html">\
                 <img src="register.png">\
                 Sign Up</a>\
         </div>\
