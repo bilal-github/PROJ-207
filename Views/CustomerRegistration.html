@@ -13,18 +13,24 @@ This is an html page
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<script src="AccessDbCustomers.js"></script>
-  
- 
-  <link rel="stylesheet" href="../Modules/bootstrap.min.css"/>
+  <script src="AccessDbCustomers.js"></script>
+
+
+  <link rel="stylesheet" href="../Modules/bootstrap.min.css" />
   <script src="../Modules/jquery.min.js"></script>
   <script src="../Modules/popper.min.js"></script>
   <script src="../Modules/bootstrap.min.js"></script>
   <script src="../js/navBarHTML.js"></script>
 
-  <link rel="stylesheet" href="../css/registration.css" !important/>
-  
+  <link rel="stylesheet" href="../css/registration.css" !important />
+
   <script></script>
+  <style>
+    #navBar img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -32,7 +38,7 @@ This is an html page
   <!-- The header and Navigation Bar will be put into the <section tag> by the 
     Javascript file called navBarHTML.js -->
 
-  <section></section>
+  <section id="navBar"></section>
 
   <!-- Tabs starts -->
   <div class="container" id="myTabs">
@@ -50,7 +56,7 @@ This is an html page
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="register" role="tabpanel" aria-labelledby="register-tab">
         <!-- Registration Tab -->
-        <form id = "registration_Form" class="myForm" method="POST" action="/post_form">
+        <form id="registration_Form" class="myForm" method="POST" action="/post_form">
           <!--add method="POST" if using bouncer.php-->
           <fieldset>
             <legend>
@@ -78,7 +84,9 @@ This is an html page
                 required="required" /><br />
 
               <label for="custPostal">Postal Code:</label><br />
-              <input type="text" pattern="^[ABCEGHJ-NPRSTVXYabceghj-nprstvxy][0-9][ABCEGHJ-NPRSTV-Zabceghj-nprstv-z] ?[0-9][ABCEGHJ-NPRSTV-Zabceghj-nprstv-z][0-9]$" class="form-control" placeholder="Postal Code" name="custPostal" id="custPostal"
+              <input type="text"
+                pattern="^[ABCEGHJ-NPRSTVXYabceghj-nprstvxy][0-9][ABCEGHJ-NPRSTV-Zabceghj-nprstv-z] ?[0-9][ABCEGHJ-NPRSTV-Zabceghj-nprstv-z][0-9]$"
+                class="form-control" placeholder="Postal Code" name="custPostal" id="custPostal"
                 required="required" /><br />
 
               <label for="custCountry">Country:</label><br />
@@ -90,18 +98,12 @@ This is an html page
                 required="required" /><br />
 
               <label for="custBusPhone">Business Phone:</label><br />
-              <input type="text" class="form-control" placeholder="Business Phone" name="custBusPhone" id="custBusPhone"
-                 /><br />
-                 
+              <input type="text" class="form-control" placeholder="Business Phone" name="custBusPhone"
+                id="custBusPhone" /><br />
+
               <label for="custEmail">Email:</label><br />
-              <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control" name="custEmail" placeholder="Enter your email" id="custEmail"
-                required="required" /><br />
-
-          
-
-             
-
-
+              <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control"
+                name="custEmail" placeholder="Enter your email" id="custEmail" required="required" /><br />
 
               <label for="userName">User Name:</label><br />
               <input type="text" class="form-control" placeholder="User Name" name="UserName" id="userName"
@@ -111,22 +113,6 @@ This is an html page
               <input type="password" class="form-control" id="userPassword" minlength="8" placeholder="Password"
                 name="userPassword" required="required" /><br /><br />
 
-              <!-- Gender Radio Buttons Start -->
-             <!--  <h4>Select Your Gender:</h4>
-              <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="maleRadio" name="gender" checked="checked" />
-                <label class="custom-control-label" for="maleRadio">Male</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="femaleRadio" name="gender" />
-                <label class="custom-control-label" for="femaleRadio">Female</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="otherRadio" name="gender" />
-                <label class="custom-control-label" for="otherRadio">Other</label>
-              </div>
-              <br /> -->
-              <!-- Gender Radio Buttons End -->
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="terms" name="terms" checked="checked" />
                 <label class="custom-control-label" for="terms">
@@ -150,7 +136,7 @@ This is an html page
       </div>
       <div class="tab-pane fade in" id="login" role="tabpanel" aria-labelledby="login-tab">
         <!-- Login Tab -->
-        <form class="myForm" method="POST" action="/post_loginForm" >
+        <form class="myForm" method="POST" action="/post_loginForm">
           <!--add method="POST" if using bouncer.php-->
           <fieldset>
             <legend>
@@ -158,8 +144,8 @@ This is an html page
             </legend>
             <div class="padded">
               <label for="uName" id="login_userName">User Name:</label><br />
-              <input type="text" class="form-control form-control" placeholder="User Name" name="uNameLogin" id="uNameLogin"
-                required="required" /><br />
+              <input type="text" class="form-control form-control" placeholder="User Name" name="uNameLogin"
+                id="uNameLogin" required="required" /><br />
 
               <label for="pass">Password (8 Characters Minimum):</label><br />
               <input type="password" class="form-control form-control" id="passwordLogin" minlength="8"
@@ -174,8 +160,8 @@ This is an html page
               </div>
               <br />
 
-              <input class="btn btn-primary" style="width: 150px;" type="submit" value="Login"/>
-                <!-- onclick="return submitted(this.form)" /> -->
+              <input class="btn btn-primary" style="width: 150px;" type="submit" value="Login" />
+              <!-- onclick="return submitted(this.form)" /> -->
             </div>
           </fieldset>
         </form>
@@ -191,7 +177,7 @@ This is an html page
   <footer>
     <p class="copyright">Copyright &copy; 2019</p>
   </footer>
- 
+
 
   <script>
     // Changing background colors for the Register and reset buttons

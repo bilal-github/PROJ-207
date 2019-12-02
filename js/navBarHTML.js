@@ -53,5 +53,5 @@ var navBarHTML =
         </div>\
     </div>\
 </nav>';
-  $("section").append(oldBarHTML);
+  $("section").append(navBarHTML);
 });
