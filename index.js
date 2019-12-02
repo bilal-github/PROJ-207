@@ -14,6 +14,7 @@ con.connect((err) => {
     if (err) throw err;
 });
 
+app.use(express.static("modules"));
 app.use(express.static("images"));
 app.use(express.static("js"));
 app.use(express.static("css"));
