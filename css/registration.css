@@ -1,0 +1,138 @@
+#header {
+    display: flex;
+  }
+
+  .logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  #logoNameID {
+    align-self: center;
+    font-family: "Courier New", Courier, monospace;
+  }
+
+  fieldset {
+    background-color: rgb(165, 194, 194);
+    /* border-color: midnightblue; */
+  }
+
+  legend {
+    color: rgb(22, 6, 2);
+    font-size: 22px;
+    background-color: rgb(112, 128, 144);
+    /* font-style: italic; */
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+  }
+
+  .pageTitle {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .normal {
+    font-variant: normal;
+  }
+
+  .thick {
+    font-weight: bolder;
+  }
+
+  .myForm {
+    border-width: 2px;
+  }
+
+  .padded {
+    padding-left: 20px;
+  }
+
+  .copyright {
+    text-align: center;
+    bottom: -20;
+  }
+
+  [type="text"],
+  [type="email"],
+  [type="date"],
+  [type="number"],
+  [type="password"] {
+    background-color: rgb(226, 235, 213);
+    color: rgb(19, 5, 1);
+    width: 50%;
+  }
+
+
+
+
+
+
+
+  /* .btn {
+      color: white;
+      width: 90px;
+      height: 40px;
+      font-size: 16px;
+      font-weight: bold;
+      font-family: "Courier New", Courier, monospace;
+      border: none;
+    } */
+
+  div.padded::after {
+    padding: 50px;
+  }
+
+  [type="radio"] {
+    padding-right: 30px;
+  }
+
+  .tab-content {
+    color: white;
+    background-color: slate;
+    /* padding: 5px 15px; */
+  }
+
+  #myTab {
+    /* padding: 5px; */
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Courier New", Courier, monospace;
+  }
+
+  #myTab:link {
+    color: white;
+  }
+
+  #register-tab.active {
+    background-color: rgb(112, 128, 144);
+    color: white;
+    border-color: rgb(112, 128, 144);
+  }
+
+  #login-tab.active {
+    background-color: rgb(112, 128, 144);
+    color: white;
+    border-color: rgb(112, 128, 144);
+  }
+
+  /* div.padded > label{
+          visibility: hidden;
+      } */
+
+  .nav-link {
+    color: rgb(87, 83, 83);
+    font-weight: bolder;
+  }
+
+  .nav-link:hover {
+    background-color: rgba(169, 175, 175, 0.219);
+    color: grey;
+  }
+
+  #myTabs {
+    padding-top: 20px;
+  }
+  
