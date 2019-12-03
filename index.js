@@ -141,13 +141,13 @@ app.post("/post_Vacationform", (req, res)=>{
 	
 
 
-		var sql="INSERT INTO `tblpackagebooking`(`Cfname`, `clname`, `cphone`, `cemail`, `cpackagename`, `cpackageprice`, `bkgdate`) VALUES (?,?,?,?,?,?,?)";
+		var sql="INSERT INTO `tblpackagebooking`(`cfname`, `clname`, `cphone`, `cemail`, `cpackagename`, `cpackageprice`, `bkgdate`) VALUES (?,?,?,?,?,?,?)";
 
 		conn.query(sql, data, (err, result, fields)=>{
 			if (err) throw err;
 			console.log(result);
 		});
-		res.send("<script>alert(\"test\")</script>");
+		//res.send("<script>alert(\"test\")</script>");
 		//res.redirect("/thanks.html");
 	});	
 //Code Author: Brian
