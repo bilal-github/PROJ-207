@@ -3,7 +3,7 @@
  * COURSE: CPRG-210-OSD
  * ASSIGNMENT: THREADED PROJECT - TERM 1
  * @author: Brian Appleton
- * @description: a script for creating typing effects and cursor blinking effects
+ * @description: a class for creating typing effects and cursor blinking effects
  */
 
 /**
@@ -15,7 +15,7 @@
  * @param {Function} callback is a method that is called when the function has completed displaying the text parameter
  * @param {Function} callback2 a 2nd callback method
  * 
- * @description a string is displayed on the screen one charactor at a time which creates a typing effect
+ * @description a string is displayed on the screen one charactor at a time with a defined interval between updates which creates a typing effect
  */
 function textTyping(id, text, milliseconds, callback, callback2) {
     var intervalCounter = 0;
@@ -40,7 +40,7 @@ function textTyping(id, text, milliseconds, callback, callback2) {
  * 
  * @param {String} id the id of the element where the blinking cursor will appear
  * @param {String} runTime length of time in milliseconds the function lasts
- * @param {Function} callback a callback function
+ * @param {Function} callback
  * @description creates a blinking cursor effect on a given string for a specified time period in milliseconds
  */
 function blinkingCursor(id, runTime, callback) {
@@ -69,8 +69,6 @@ function blinkingCursor(id, runTime, callback) {
         else {
             document.getElementById(id).innerHTML = text.substring(0, length + 1) + "|";
         }
-
-
     }, localMilliseconds);
 }
 

@@ -38,59 +38,74 @@ Description: The main entry point for the travel website
 
         <!-- Functions -->
         <script>
+            //when body is ready, load intro animation
             $('#body').ready(animatedIntro());
+
             var packageData;
             var packageIndex = 0;
 
-            //display package data on the screen
+
+            //get Package Data from SQL
             getHttpRequest("/getVacationPackages", (data) => {
                 packageData = JSON.parse(data);
                 document.getElementById("packagesText").innerHTML = packageData[0].PkgDesc;
             });
 
+            //fade in button and package details
             function fadeInTextTransitions() {
                 //fades in and UP the main button
                 document.getElementById("introBtn").style.opacity = "1.0";
                 document.getElementById("introBtn").style.marginTop = "0";
 
                 //fade in and start rotating packages being displayed
-                startPackagesTransitions();
+                startPackagesTransitions("introText");
             }
 
-            //provides the fading effects to the package data being displayed.
-            function startPackagesTransitions() {
-                //rotates package text by lowering opacity, changing text and raising opacity
-                    packageIndex++;
-                    var rotatePackageText = setInterval(() => {
-                        if (packageIndex < packageData.length - 1) {
-                            packageIndex++;
-                        }
-                        else {
-                            packageIndex = 0;
-                        }
-                        document.getElementById("packagesText").style.opacity = "1";
-                        document.getElementById("packagesText").innerHTML = packageData[packageIndex].PkgDesc;
-                        var fadeOut = setTimeout(() => {
-                            document.getElementById("packagesText").style.opacity = "0";
-                        }, 2000);
-                    }, 3000);
+
+            function startPackagesTransitions(elementID) {
+                var fadeInInterval = 3500;
+                var fadeOutInterval = fadeInInterval / 2;
+                var transitionInterval = (fadeOutInterval / 1000).toString() + "s";
+
+
+                document.getElementById(elementID).style.transition = "opacity " + transitionInterval;
+
+
+                //rotate fading in than out new packages
+                document.getElementById(elementID).style.opacity = "0";
+
+                var startRotatingPackages = setInterval(() => {
+                    if (packageIndex < packageData.length - 1) {
+                        packageIndex++;
+                    }
+                    else {
+                        packageIndex = 0;
+                    }
+
+                    document.getElementById(elementID).style.opacity = "1";
+                    document.getElementById(elementID).innerHTML = packageData[packageIndex].PkgDesc;
+
+                    var fadeOut = setTimeout(() => {
+                        document.getElementById(elementID).style.opacity = "0";
+                    }, fadeOutInterval); // END FADEOUT
+                }, fadeInInterval);// END startRotatingPackages
             }
 
 
             //creates the introduction animation on page load.
             function animatedIntro() {
-                var blinkingCursorRunTime = 0; // default 1900
-                var delayBetweenCharsTyped = 0; //default" 75
-                var delayBetweenSentences = 0; // default 1000
-                var sentenceOne = "'Live life with no excuses,";
-                var sentenceTwo = " travel with no regrets.'"
+                var blinkingCursorRunTime = 1700; // default 1900
+                var delayBetweenCharsTyped = 75; //default" 75
+                var delayBetweenSentences = 600; // default 1000
+                var sentenceOne = "\"Live life with no excuses,";
+                var sentenceTwo = " travel with no regrets.\""
                 var elementId = "introText";
 
                 //creates blinking cursor effect
                 blinkingCursor(elementId, blinkingCursorRunTime, () => {
                     //then prints the sentenceOne string, 1 charactor at a time
                     textTyping(elementId, sentenceOne, delayBetweenCharsTyped, () => {
-                        //then prints the sentenceTwo, 1 charactor at a time after a short delay between sentence1 & 2
+                        //then prints the sentenceTwo, 1 charactor at a time after a short delay between sentence1 & 2. when done make a callback to show the button & packages
                         setTimeout(() => {
                             textTyping(elementId, sentenceTwo, delayBetweenCharsTyped,
                                 fadeInTextTransitions);
@@ -117,6 +132,9 @@ Description: The main entry point for the travel website
                 opacity: 0;
                 color: cornsilk;
                 font-family: 'Amatic SC', cursive;
+                font-size: 3.5rem;
+                font-weight: bold;
+                border-radius: 10px;
             }
 
             #introText {
@@ -132,28 +150,13 @@ Description: The main entry point for the travel website
             }
 
             #packagesText {
-                font-size: 3rem;
+                font-size: 2.75rem;
                 color: rgb(136, 135, 135);
-                transition: opacity 1s;
-                margin-top: 1rem;
+                transition: opacity 0.75s;
+                margin-top: 0.75rem;
                 opacity: 0;
                 font-family: 'Roboto Slab', serif;
             }
-
-            /* @supports (-webkit-text-stroke: .75px rgb(0, 0, 0)) {
-                #packagesText {
-                    -webkit-text-stroke: .75px black;
-                    -webkit-text-fill-color: rgb(246, 235, 227);
-                }
-            } */
-
-            #introBtn {
-                font-size: 2.5rem;
-                border-radius: 40px;
-
-                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            }
-
 
             /* Large Screens - Targetted: Desktops/Laptops */
             @media screen and (min-width: 1024px) {
@@ -239,19 +242,17 @@ Description: The main entry point for the travel website
             <div class="row no-gutters">
                 <div class="col-md text-center footer">
 
-
-
                     <!-- Animated Text -->
 
                     <p class="text-center" id="introText">|</p>
 
                     <!-- Button -->
-                    <button type="button" class="btn btn-primary btn-md" id="introBtn">Start Your Journey</button>
+                    <a href="vacation.html">
+                        <button type="button" class="btn btn-primary btn-md" id="introBtn">Start Your Journey</button>
+                    </a>
 
                     <!-- Package Details Text -->
                     <p id="packagesText">|</p>
-
-
 
                 </div>
             </div>
