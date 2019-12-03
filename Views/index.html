@@ -94,9 +94,9 @@ Description: The main entry point for the travel website
 
             //creates the introduction animation on page load.
             function animatedIntro() {
-                var blinkingCursorRunTime = 1700; // default 1900
+                var blinkingCursorRunTime = 1700; // default 1700
                 var delayBetweenCharsTyped = 75; //default" 75
-                var delayBetweenSentences = 600; // default 1000
+                var delayBetweenSentences = 600; // default 600
                 var sentenceOne = "\"Live life with no excuses,";
                 var sentenceTwo = " travel with no regrets.\""
                 var elementId = "introText";
@@ -113,7 +113,6 @@ Description: The main entry point for the travel website
                     });
                 });
             }
-
         </script>
 
     </head>
@@ -134,12 +133,13 @@ Description: The main entry point for the travel website
                 <div class="col-md text-center footer">
 
                     <!-- Animated Text -->
-
                     <p class="text-center" id="introText">|</p>
 
                     <!-- Button -->
                     <a href="vacation.html">
-                        <button type="button" class="btn btn-primary btn-md" id="introBtn">Start Your Journey</button>
+                        <button type="button" class="btn btn-primary btn-md" id="introBtn">
+                            Start Your Journey
+                        </button>
                     </a>
 
                     <!-- Package Details Text -->
