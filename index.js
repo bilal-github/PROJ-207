@@ -44,13 +44,25 @@ app.get('/getVacationPackages', function (req, res) {
     });
 });
 
+//Code Author: Zoha
+app.get("/packagedata", (req, res) => {
+	var data1;
+	conn.query("SELECT * FROM packages", (err, result) => {
+		if (err) throw err;
+		console.log(result);
+		res.send(result);
+	});
+	
+});
+
 // app.get("/CustomerRegistration", (req, res) => {
 //     res.sendFile("/CustomerRegistration");
 // });
 
 // Code author: Bilal 
-var data = [];
+
 app.post("/post_form", (req, res) => {
+    var data = [];
     console.log(req.body);
     data[0] = req.body.custFirstName;
     data[1] = req.body.custLastName;
@@ -112,8 +124,32 @@ app.post("/post_loginForm", (req, res) => {
         }
     });
 
-})
+});
 
+//Code Author: Zoha
+app.post("/post_Vacationform", (req, res)=>{
+	var data=[];
+	console.log(req.body);
+	data[0] = req.body.FirstName;
+	data[1] = req.body.LastName;
+	data[2] = req.body.PhoneNumber;
+	data[3] = req.body.email;
+	data[4] = req.body.PacakageName;
+	data[5] = req.body.PacakagePrice;
+	data[6] = req.body.BookingDate;
+
+	
+
+
+		var sql="INSERT INTO `tblpackagebooking`(`Cfname`, `clname`, `cphone`, `cemail`, `cpackagename`, `cpackageprice`, `bkgdate`) VALUES (?,?,?,?,?,?,?)";
+
+		conn.query(sql, data, (err, result, fields)=>{
+			if (err) throw err;
+			console.log(result);
+		});
+		res.send("<script>alert(\"test\")</script>");
+		//res.redirect("/thanks.html");
+	});	
 //Code Author: Brian
 app.listen(8000, err => {
     if (err) throw err;
