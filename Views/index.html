@@ -75,6 +75,7 @@ Description: The main entry point for the travel website
                 document.getElementById(elementID).style.opacity = "0";
 
                 var startRotatingPackages = setInterval(() => {
+
                     if (packageIndex < packageData.length - 1) {
                         packageIndex++;
                     }
@@ -87,7 +88,8 @@ Description: The main entry point for the travel website
 
                     var fadeOut = setTimeout(() => {
                         document.getElementById(elementID).style.opacity = "0";
-                    }, fadeOutInterval); // END FADEOUT
+                    }, fadeOutInterval); // END fadeOut
+
                 }, fadeInInterval);// END startRotatingPackages
             }
 
