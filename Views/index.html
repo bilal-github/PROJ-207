@@ -15,7 +15,7 @@ Description: The main entry point for the travel website
             Travel Experts | Go Further.
         </Title>
 
-        <!-- Begin block of code-->
+        <!-- Bootstrap Import-->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -23,18 +23,20 @@ Description: The main entry point for the travel website
         <script src="jquery.min.js"></script>
         <script src="popper.min.js"></script>
         <script src="bootstrap.min.js"></script>
-        <script src="RetrieveSQLData.js"></script>
-
-
+        <!-- End Bootstrap -->
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
 
-        <!-- Imported Scripts -->
+        <!-- Scripts -->
         <script src="navBarHTML.js"></script>
         <script src="TextAnimation.js"></script>
+        <script src="RetrieveSQLData.js"></script>
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="index.css" />
 
         <!-- Functions -->
         <script>
@@ -61,15 +63,13 @@ Description: The main entry point for the travel website
                 startPackagesTransitions("introText");
             }
 
-
+            //fades in and rotates the packages descriptions
             function startPackagesTransitions(elementID) {
                 var fadeInInterval = 3500;
                 var fadeOutInterval = fadeInInterval / 2;
                 var transitionInterval = (fadeOutInterval / 1000).toString() + "s";
 
-
                 document.getElementById(elementID).style.transition = "opacity " + transitionInterval;
-
 
                 //rotate fading in than out new packages
                 document.getElementById(elementID).style.opacity = "0";
@@ -113,118 +113,9 @@ Description: The main entry point for the travel website
                     });
                 });
             }
+
         </script>
-        <style>
-            body {
-                margin: 0;
-                background-color: rgb(204, 204, 204);
-            }
 
-            #navBar img {
-                width: 1.5rem;
-                height: 1.5rem;
-            }
-
-            #introBtn {
-                /* hide and position button prior to transitioning in and being displayed */
-                margin-top: 250px;
-                transition: opacity 3s, margin-top 3s;
-                opacity: 0;
-                color: cornsilk;
-                font-family: 'Amatic SC', cursive;
-                font-size: 3.5rem;
-                font-weight: bold;
-                border-radius: 10px;
-            }
-
-            #introText {
-                font-family: 'Indie Flower', cursive;
-                z-index: 2;
-            }
-
-            #introImage {
-                width: 100%;
-                min-height: 100%;
-                max-height: 100%;
-                position: fixed;
-            }
-
-            #packagesText {
-                font-size: 2.75rem;
-                color: rgb(136, 135, 135);
-                transition: opacity 0.75s;
-                margin-top: 0.75rem;
-                opacity: 0;
-                font-family: 'Roboto Slab', serif;
-            }
-
-            /* Large Screens - Targetted: Desktops/Laptops */
-            @media screen and (min-width: 1024px) {
-                #introText {
-                    margin-top: 1.3rem;
-                    font-size: 4.5rem;
-                }
-            }
-
-            /* Medium Screens  - Targetted: Ipads  */
-            @media screen and (max-width: 1024px) {
-                #introText {
-                    margin-top: 2rem;
-                    font-size: 4.5rem;
-                }
-
-                #introImage {
-                    width: 180%;
-                    margin-left: -40%;
-                }
-
-                #packagesText {
-                    background-color: rgba(255, 255, 255, 0.431);
-                    color: black;
-                    -webkit-text-fill-color: black;
-                    font-size: 4rem;
-                    margin-top: 2rem;
-                }
-            }
-
-            /* Small Screens  - Targetted: Phones  */
-            @media screen and (max-height: 840px) and (max-width: 420px) {
-                #introText {
-                    margin-top: 2rem;
-                    font-size: 2rem;
-                }
-
-                #introImage {
-                    width: 300%;
-                    margin-left: -100%;
-                }
-
-                #introBtn {
-                    font-size: 1.5rem;
-                }
-
-                #packagesText {
-                    font-size: 2rem;
-                }
-            }
-
-            /* X-Small Screens - Targetted: Phones  */
-            @media screen and (max-height: 610px) and (max-width: 420px) {
-                #introText {
-                    margin-top: 2rem;
-                    font-size: 2rem;
-                }
-
-                #introImage {
-                    width: 300%;
-                    margin-left: -100%;
-                }
-
-                #introBtn {
-                    font-size: 1.0rem;
-                }
-            }
-        </style>
     </head>
 
     <body>
