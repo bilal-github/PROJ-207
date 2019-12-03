@@ -10,7 +10,7 @@ body {
 
 #introBtn {
     /* hide and position button prior to transitioning in and being displayed */
-    margin-top: 250px;
+    margin-top:15rem;
     transition: opacity 3s, margin-top 3s;
     opacity: 0;
     color: cornsilk;
@@ -22,7 +22,10 @@ body {
 
 #introText {
     font-family: 'Indie Flower', cursive;
-    z-index: 2;
+}
+
+.introTextCol {
+    height: 15rem;
 }
 
 #introImage {
@@ -32,20 +35,14 @@ body {
     position: fixed;
 }
 
-#packagesText {
-    font-size: 2.75rem;
-    color: rgb(136, 135, 135);
-    transition: opacity 0.75s;
-    margin-top: 0.75rem;
-    opacity: 0;
-    font-family: 'Roboto Slab', serif;
-}
-
 /* Large Screens - Targetted: Desktops/Laptops */
 @media screen and (min-width: 1024px) {
     #introText {
         margin-top: 1.3rem;
         font-size: 4.5rem;
+    }
+    #introBtn {
+    font-size: 3.5rem;
     }
 }
 
@@ -60,14 +57,6 @@ body {
         width: 180%;
         margin-left: -40%;
     }
-
-    #packagesText {
-        background-color: rgba(255, 255, 255, 0.431);
-        color: black;
-        -webkit-text-fill-color: black;
-        font-size: 4rem;
-        margin-top: 2rem;
-    }
 }
 
 /* Small Screens  - Targetted: Phones  */
@@ -76,19 +65,15 @@ body {
         margin-top: 2rem;
         font-size: 2rem;
     }
-
+    #introBtn {
+        font-size: 2.5rem;
+    }
     #introImage {
         width: 300%;
         margin-left: -100%;
     }
 
-    #introBtn {
-        font-size: 1.5rem;
-    }
 
-    #packagesText {
-        font-size: 2rem;
-    }
 }
 
 /* X-Small Screens - Targetted: Phones  */
@@ -104,6 +89,6 @@ body {
     }
 
     #introBtn {
-        font-size: 1.0rem;
+        font-size: 2.5rem;
     }
 }

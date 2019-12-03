@@ -50,14 +50,13 @@ Description: The main entry point for the travel website
             //get Package Data from SQL
             getHttpRequest("/getVacationPackages", (data) => {
                 packageData = JSON.parse(data);
-                document.getElementById("packagesText").innerHTML = packageData[0].PkgDesc;
             });
 
             //fade in button and package details
             function fadeInTextTransitions() {
                 //fades in and UP the main button
                 document.getElementById("introBtn").style.opacity = "1.0";
-                document.getElementById("introBtn").style.marginTop = "0";
+                document.getElementById("introBtn").style.marginTop = "0rem";
 
                 //fade in and start rotating packages being displayed
                 startPackagesTransitions("introText");
@@ -132,10 +131,15 @@ Description: The main entry point for the travel website
                 </div>
             </div>
             <div class="row no-gutters">
-                <div class="col-md text-center footer">
+                <div class="col-md text-center introTextCol">
 
                     <!-- Animated Text -->
                     <p class="text-center" id="introText">|</p>
+
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-md text-center">
 
                     <!-- Button -->
                     <a href="vacation.html">
@@ -143,9 +147,6 @@ Description: The main entry point for the travel website
                             Start Your Journey
                         </button>
                     </a>
-
-                    <!-- Package Details Text -->
-                    <p id="packagesText">|</p>
 
                 </div>
             </div>
