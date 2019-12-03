@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mysql = require("mysql");
 
-const bodyParser = require("body-parser");
+//const bodyParser = require("body-parser");
 
 var conn = mysql.createConnection({
     host: "localhost",
@@ -10,13 +10,14 @@ var conn = mysql.createConnection({
     database: "travelexperts"
 });
 
+//Code Author: Brian
 //establishes the SQL connection
 conn.connect((err) => {
     if (err) throw err;
 });
+
 app.use(express.static('./Views', { extensions: ['html'] }));
 app.use(express.static("./"));
-
 app.use(express.static("modules"));
 app.use(express.static("images"));
 app.use(express.static("js"));
@@ -24,12 +25,13 @@ app.use(express.static("css"));
 app.use(express.urlencoded({ extended: true }));
 // app.use(bodyParser.urlencoded({ extended: true }));
 
-
+//Code Author: Brian
 //serves out the index page 
 app.get('/', function (req, res) {
     res.sendFile(__dirname + "/views/index.html");
 });
 
+//Code Author: Brian
 //Serves back the SQL PkgName column from the PACKAGES table in SQL
 app.get('/getVacationPackages', function (req, res) {
     var vacationData;
@@ -41,15 +43,10 @@ app.get('/getVacationPackages', function (req, res) {
         res.send(result);
     });
 });
+
 // app.get("/CustomerRegistration", (req, res) => {
 //     res.sendFile("/CustomerRegistration");
 // });
-
-app.listen(8000, err => {
-    if (err) throw err;
-    console.log("Server started on port 8000");
-});
-
 
 // Code author: Bilal 
 var data = [];
@@ -116,3 +113,9 @@ app.post("/post_loginForm", (req, res) => {
     });
 
 })
+
+//Code Author: Brian
+app.listen(8000, err => {
+    if (err) throw err;
+    console.log("Server started on port 8000");
+});
