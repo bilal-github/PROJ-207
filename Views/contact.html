@@ -7,6 +7,17 @@
 
   <title>Contact Us</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+<link rel="stylesheet" href="../Modules/bootstrap.min.css" />
+<script src="../Modules/jquery.min.js"></script>
+<script src="../Modules/popper.min.js"></script>
+<script src="../Modules/bootstrap.min.js"></script>
+<script src="../js/navBarHTML.js"></script>
+
+  <script src="selectfromcontact.js"></script>
+  <script src="RetrieveSQLData.js"></script>  
   <style>
     table,
     td {
@@ -39,26 +50,19 @@
       width: 1.5rem;
       height: 1.5rem;
     }
+    .center{
+      align-self: center;
+      right: -100;
+    }
+    .form-control::placeholder, 
+    select.form-control { 
+      color: white;
+    }
+
+    [type="text"], select.form-control{
+      background-color: rgba(165, 171, 157, 0.2);
+    }
   </style>
-
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
-
-  <script src="selectfromcontact.js"></script>
-  <script src="RetrieveSQLData.js"></script>
-  <script src="navBarHTML.js"></script>
   <script>
 
     $(document).ready(function () {
@@ -148,7 +152,7 @@
             <option value="Other">Other</option>
           </select><br />
           <input type="submit" value="Send Form" class="btn btn-primary"
-            onclick="return ValidateEmail(document.form1.EmailId)" /><br />
+            onclick="return ValidateEmail(document.form1.EmailId)" /><br /><br>
         </form>
         <h3 id="test11">Thank you. We will contact you within 24 Hours.</h3>
       </div>
@@ -156,7 +160,7 @@
 
 
 
-      <div class="col-sm">
+      <div class="col-sm center">
         <h3>Headquarters:</h3>
         <a href="https://www.google.ca/maps/place/SAIT/@51.0640303,-114.0907061,17z/data=!3m1!4b1!4m5!3m4!1s0x53716f9268a69e81:0xb1db5e68bd61e28!8m2!3d51.0640269!4d-114.0885174"
           target="_blank">
