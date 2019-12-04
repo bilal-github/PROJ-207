@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    table,
+    td {
+      border: 1px solid black;
+    }
+
+    body {
+      background-image: url("./images/contactBackground.jpg");
+    }
+
+    .container {
+      background: rgb(0, 0, 0);
+      /* Fallback color */
+      background: rgba(0, 0, 0, 0.5);
+      /* Black background with 0.5 opacity */
+      color: #f1f1f1;
+
+    }
+
+    .table {
+      display: inline-block;
+    }
+
+    .dab {
+      background: rgba(0, 0, 0, 0.3);
+      color: blue;
+    }
+
+    #navBar img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  </style>
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+  <script src="selectfromcontact.js"></script>
+  <script src="RetrieveSQLData.js"></script>
+  <script src="navBarHTML.js"></script>
+  <script>
+
+    $(document).ready(function () {
+      $("#test11").hide();
+    });
+
+    getHttpRequest("/agentsdata", (data) => {
+      var sqldata = JSON.parse(data);
+      for (var i = 0; i < sqldata.length; i++) {
+        //document.getElementById("testing").innerText = sqldata[i].AgtFirstName;
+        var node = document.createElement("h4");
+        var textnode = document.createTextNode(sqldata[i].AgtFirstName + " " + sqldata[i].AgtLastName);
+        node.appendChild(textnode);
+
+        var nodeBr = document.createElement("h6");
+        var textnode1 = document.createTextNode("Phone: " + sqldata[i].AgtBusPhone + " " + "Email: " + sqldata[i].AgtEmail);
+        nodeBr.appendChild(textnode1);
+
+        var element = document.getElementById("test");
+        element.appendChild(node);
+        element.appendChild(nodeBr)
+        // var element1 = document.getElementById("test1")
+        // element1.appendChild(nodeBr);
+
+
+        /* var node1 = document.createTextNode("p");
+        var textnode1 = document.createTextNode("Phone: " + sqldata[i].AgtBusPhone + " " + "Email: " + sqldata[i].AgtEmail);
+        node1.appendChild(textnode1);
+        var element1 = document.getElementById("test1");
+        element1.appendChild(node1); */
+      }
+    });
+    function swap() {
+      $("#test11").show();
+      $("#form1").hide();
+    }
+  </script>
+
+
+  <script>
+    function ValidateEmail(inputText) {
+      var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if (inputText.value.match(mailformat)) {
+        document.form1.EmailId.focus();
+        swap();
+        return true;
+
+      } else {
+        alert("Invalid email address!");
+        document.form1.EmailId.focus();
+        return false;
+      }
+    }
+  </script>
+</head>
+
+<body onload="document.form1.text1.focus()">
+  <section id="navBar"></section>
+  <div>
+    <br />
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <!-- <form method="POST" class="name1" name="form1" style="position: relative;" action="/send_form"> -->
+
+        <form method="POST" class="name1" id="form1" name="form1" action="/send_form"><br />
+
+
+          <!-- <h2 style="position: relative;">Contact us:</h2> -->
+          <h3>Contact us:</h3>
+
+          <br />
+          <input type="text" class="form-control dab" placeholder="Full Name" name="Full_Name" required /><br />
+
+          <input type="text" class="form-control" placeholder="Email ID" name="EmailId" required /><br />
+
+          <input type="text" class="form-control" placeholder="City" name="City" required /><br />
+
+          <input type="text" class="form-control" placeholder="Phone#" name="Phone" required /><br />
+
+          <select class="form-control" name="Reason">
+            <option value="Select a Reason">Select a Reason</option>
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Payment Issues">Payment Issues</option>
+            <option value="Flight Confirmation">Flight Confirmation</option>
+            <option value="Other">Other</option>
+          </select><br />
+          <input type="submit" value="Send Form" class="btn btn-primary"
+            onclick="return ValidateEmail(document.form1.EmailId)" /><br />
+        </form>
+        <h3 id="test11">Thank you. We will contact you within 24 Hours.</h3>
+      </div>
+
+
+
+
+      <div class="col-sm">
+        <h3>Headquarters:</h3>
+        <a href="https://www.google.ca/maps/place/SAIT/@51.0640303,-114.0907061,17z/data=!3m1!4b1!4m5!3m4!1s0x53716f9268a69e81:0xb1db5e68bd61e28!8m2!3d51.0640269!4d-114.0885174"
+          target="_blank">
+          Address: 1301 16 Ave NW, Calgary, AB T2M 0L4</a>
+        <p>Phone #: 403-999-9999</p>
+        <p>Email Id: travel-experts@gmail.com</p>
+
+        <h3>Okotoks Branch:</h3>
+        <a href="https://www.google.ca/maps/place/SAIT/@51.0640303,-114.0907061,17z/data=!3m1!4b1!4m5!3m4!1s0x53716f9268a69e81:0xb1db5e68bd61e28!8m2!3d51.0640269!4d-114.0885174"
+          target="_blank">
+          Address: 1301 16 Ave NW, Okotoks, AB T2M 0L4</a>
+        <p>Phone #: 403-999-8888</p>
+        <p>Email Id: travel-experts@gmail.com</p>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="container">
+    <h3>Agent Contact List:</h3>
+    <h4 id="test"></h4>
+  </div>
+
+</body>
+
+</html>
