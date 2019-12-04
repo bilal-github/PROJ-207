@@ -24,7 +24,7 @@
         }
 
         function myFunction(i) {
-           // alert(i);
+            // alert(i);
             document.getElementById("PackageName").value = document.getElementById("myTable").rows[i].cells[0].innerHTML;
             document.getElementById("PackagePrice").value = document.getElementById("myTable").rows[i].cells[1].innerHTML;
 
@@ -213,7 +213,7 @@
                                                         cell1.innerHTML = sqldata[i].PkgName;
                                                         cell2.innerHTML = sqldata[i].PkgBasePrice;
                                                         cell3.innerHTML = sqldata[i].PkgDesc;
-                                                        var a= parseInt(i)+1;
+                                                        var a = parseInt(i) + 1;
                                                         cell4.innerHTML = "<input type= button class= 'btn btn-danger btn-rounded'  value= Select id= button" + i + " onclick='myFunction(" + a + ")'/>";
 
 
