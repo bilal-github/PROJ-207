@@ -11,7 +11,7 @@ $(document).ready(function() {
                 <a class="nav-link" href="index.html">\
                 <img src="plane.png">\
                 Home</a>\
-                <a class="nav-link" href="Contact-details.html">\
+                <a class="nav-link" href="Contact.html">\
                 <img src="card.png">\
                 Contact Us</a>\
                 <a class="nav-link" href="Vacation.html">\
