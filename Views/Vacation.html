@@ -22,6 +22,15 @@
             $("#booking_form").hide();
             $("#replacement").show();
         }
+
+        function myFunction(i) {
+           // alert(i);
+            document.getElementById("PackageName").value = document.getElementById("myTable").rows[i].cells[0].innerHTML;
+            document.getElementById("PackagePrice").value = document.getElementById("myTable").rows[i].cells[1].innerHTML;
+
+
+        }
+
     </script>
     <style>
         #navBar img {
@@ -41,7 +50,8 @@
         #myTable {
             color: white;
         }
-        #benefits{
+
+        #benefits {
             background-color: rgb(0, 0, 0, 0.5);
         }
     </style>
@@ -101,21 +111,12 @@
                                 <img class="card-img-top img-fluid" src="../images/Featured Tour.jpg">
                                 <div class="card-body">
                                     <h3 class="card-title text-info font-weight-bold">Paris and Rome</h3>
-                                    <p class="card-text font-weight-bold font-italic text-primary">New Years offer US$ 400 Instant
-                                        Savings</p> <button type="submit" class="btn btn-primary ml-4 font-italic"
-                                        onclick="myFunction()">Explore the Tour</button>
-
-                                    <script>
-
-                                        function myFunction() {
-
-                                            document.getElementById("myTable").rows[1].style.color = "#ff0000";
-                                            
-                                            
+                                    <p class="card-text font-weight-bold font-italic text-primary">New Years offer US$
+                                        400 Instant
+                                        Savings</p> <button type="submit"
+                                        class="btn btn-primary ml-4 font-italic">Explore the Tour</button>
 
 
-                                        }
-                                    </script>
                                 </div>
                             </div>
 
@@ -154,13 +155,13 @@
                     <!--Vacation Section/Gallery Section-Ends-->
 
                     <div class="row">
-                        <!--Vacation Section/Pacakage Details Section-Starts -->
+                        <!--Vacation Section/package Details Section-Starts -->
                         <div class="col-md-12 col-lg-8 col-sm-12 mb-4">
                             <div class="container">
                                 <div class="row">
                                     <!--Vacation Section/Package Heading Section-Starts -->
                                     <div class="col">
-                                        <div class="h2 text-warning ">Travel Expert Vacation Pacakages</div>
+                                        <div class="h2 text-warning ">Travel Expert Vacation packages</div>
                                     </div>
                                 </div>
                                 <!--Vacation Section/Package Heading Section Ends-->
@@ -182,10 +183,12 @@
 
                                             <table id="myTable" class="table table-responsive table-bordered-rounded ">
                                                 <thead style="text-align: center;">
-                                                    <tr class="text-warning" style="background-color: grey; text-align: center;">
-                                                        <td class="h6">Pacakage Name</td>
+                                                    <tr class="text-warning"
+                                                        style="background-color: grey; text-align: center;">
+                                                        <td class="h6">package Name</td>
                                                         <td class="h6">Package Price (CAD)</td>
                                                         <td class="h6">Package Description</td>
+                                                        <td class="h6"></td>
                                                     </tr>
                                                 </thead>
 
@@ -199,14 +202,22 @@
                                                     var table = document.getElementById("myTable");
 
                                                     for (var i = 0; i < sqldata.length; i++) {
+
                                                         var row = table.insertRow(i + 1);
                                                         var cell1 = row.insertCell(0);
                                                         var cell2 = row.insertCell(1);
                                                         var cell3 = row.insertCell(2);
+                                                        var cell4 = row.insertCell(3);
 
                                                         cell1.innerHTML = sqldata[i].PkgName;
                                                         cell2.innerHTML = sqldata[i].PkgBasePrice;
                                                         cell3.innerHTML = sqldata[i].PkgDesc;
+                                                        var a= parseInt(i)+1;
+                                                        cell4.innerHTML = "<input type= button class= 'btn btn-danger btn-rounded'  value= Select id= button" + i + " onclick='myFunction(" + a + ")'/>";
+
+
+
+
                                                     }
                                                 });
                                             </script>
@@ -220,20 +231,24 @@
 
 
 
-                                <div class="row" >
+                                <div class="row">
                                     <!--Vacation Section/Package Description Bullets Section-Starts -->
                                     <div class="col-1">
 
                                     </div>
-                                    <div class="col-10" >
-                                        <ul class="hi" >
-                                            <li class="list-group-item font-weight-bold border-0 font-italic" id="benefits" >Vacation
+                                    <div class="col-10">
+                                        <ul class="hi">
+                                            <li class="list-group-item font-weight-bold border-0 font-italic"
+                                                id="benefits">Vacation
                                                 Includes:</li>
-                                            <li class="list-group-item text-info font-weight-bold border-0" id="benefits">Private
+                                            <li class="list-group-item text-info font-weight-bold border-0"
+                                                id="benefits">Private
                                                 ground transportation to and from resort</li>
-                                            <li class="list-group-item text-info font-weight-bold border-0" id="benefits">
+                                            <li class="list-group-item text-info font-weight-bold border-0"
+                                                id="benefits">
                                                 Accommodations at Hyatt Ziva Cap Cana</li>
-                                            <li class="list-group-item text-info font-weight-bold border-0" id="benefits">Hotel taxes
+                                            <li class="list-group-item text-info font-weight-bold border-0"
+                                                id="benefits">Hotel taxes
                                                 and gratuities</li>
                                         </ul>
 
@@ -246,14 +261,15 @@
 
 
                         </div>
-                        <!--Vacation Section/Pacakage Details Section-Ends -->
+                        <!--Vacation Section/package Details Section-Ends -->
                         <div class="col-md-12 col-lg-4 sm-12" style="background-color: rgb(0,0,0,0);">
-                            <!--Vacation Pacakage /Booking Section Starts-->
+                            <!--Vacation package /Booking Section Starts-->
                             <div class="container">
-                                <div class="row" >
+                                <div class="row">
                                     <div class="col-12">
                                         <!--Booking Form Column Heading Starts-->
-                                        <div class="h3 text-info font-weight-bold pl-4" style="text-decoration: underline;">Booking Form
+                                        <div class="h3 text-info font-weight-bold pl-4"
+                                            style="text-decoration: underline;">Booking Form
                                         </div>
                                     </div>
                                     <!--Booking Form Column Heading Ends-->
@@ -261,7 +277,7 @@
                                         <!--Booking Form Column Starts-->
                                         <h4 id="replacement" style="text-align: center;" id="benefits"> Submitted</h4>
                                         <div class="booking_form" id="booking_form">
-                                            <form method="POST" action="/post_Vacationform" >
+                                            <form method="POST" action="/post_Vacationform">
                                                 <label>First Name</label>
                                                 <input type="text" class="form-control" name="FirstName" required>
                                                 <label>Last Name</label>
@@ -272,11 +288,11 @@
                                                 <input type="text" class="form-control" name="email"
                                                     required="required">
                                                 <label>Package Name</label>
-                                                <input type="text" class="form-control" name="PacakageName" required
-                                                    id="PacakageName">
-                                                <label>Pacakage Price</label>
-                                                <input type="text" class="form-control" name="PacakagePrice" required
-                                                    id="PacakagePrice">
+                                                <input type="text" class="form-control" name="packageName" required
+                                                    id="PackageName">
+                                                <label>package Price</label>
+                                                <input type="text" class="form-control" name="packagePrice" required
+                                                    id="PackagePrice">
                                                 <label>Booking Date</label>
                                                 <input type="date" class="form-control" name="BookingDate" id="date"
                                                     required>
@@ -302,7 +318,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--Vacation Pacakage /Booking Section Ends-->
+                        <!--Vacation package /Booking Section Ends-->
                     </div>
                 </div>
                 <!--Vacation Section Right Half of Page Ends -->
@@ -315,6 +331,7 @@
 <script>
     $(document).ready(function () {
         $("#replacement").hide();
+
     });
 
 </script>
