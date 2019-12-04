@@ -54,6 +54,13 @@ app.get("/packagedata", (req, res) => {
 	});
 	
 });
+//Code Author: Rohit
+app.get("/agentsdata", (req, res) => {
+    con.query("SELECT AgtFirstName, AgtLastName, AgtBusPhone, AgtEmail, AgtPosition FROM agents", function(err, result) {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
 
 // app.get("/CustomerRegistration", (req, res) => {
 //     res.sendFile("/CustomerRegistration");
@@ -155,3 +162,24 @@ app.listen(8000, err => {
     if (err) throw err;
     console.log("Server started on port 8000");
 });
+
+//Code Author: Rohit
+app.post("/send_form", (req, res) => {
+    var data = [];
+    console.log(req.body);
+    data[0] = req.body.Full_Name;
+    data[1] = req.body.Phone;
+    data[2] = req.body.City;
+    data[3] = req.body.EmailId;
+    data[4] = req.body.Reason;
+    console.log("Connected to SQL Database.");
+    var sql =
+      "INSERT INTO contact (Full_Name, Phone, City, EmailId, Reason) VALUES (?,?,?,?,?)";
+    con.query(sql, data, (err, result, fields) => {
+      if (err) throw err;
+      console.log(result);
+      con.end(err => {
+        if (err) throw err;
+      });
+    });
+  });
