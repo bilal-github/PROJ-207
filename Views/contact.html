@@ -1,78 +1,49 @@
+<!-- 
+Author:  Rohitashav Aggarwal
+Description:  Contact page, send message to the agents, gets the agents contact list from the database.
+              It also provides the company branches locations and contact info.
+Date:  Dec 05, 2019
+COURSE:  CPRG-210-OOSD
+Assignment:  Thread Project - TERM 1
+-->
+
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+  <!-- Bootstrap import -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Contact Us</title>
+  <!-- Cascading styling sheets import -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-
-<link rel="stylesheet" href="../Modules/bootstrap.min.css" />
-<script src="../Modules/jquery.min.js"></script>
-<script src="../Modules/popper.min.js"></script>
-<script src="../Modules/bootstrap.min.js"></script>
-<script src="../js/navBarHTML.js"></script>
-
+  <link rel="stylesheet" href="../Modules/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="contact.css">
+  <!-- scripts -->
+  <script src="../Modules/jquery.min.js"></script>
+  <script src="../Modules/popper.min.js"></script>
+  <script src="../Modules/bootstrap.min.js"></script>
+  <script src="../js/navBarHTML.js"></script>
   <script src="selectfromcontact.js"></script>
-  <script src="RetrieveSQLData.js"></script>  
-  <style>
-    table,
-    td {
-      border: 1px solid black;
-    }
-
-    body {
-      background-image: url("./images/contactBackground.jpg");
-    }
-
-    .container {
-      background: rgb(0, 0, 0);
-      /* Fallback color */
-      background: rgba(0, 0, 0, 0.5);
-      /* Black background with 0.5 opacity */
-      color: #f1f1f1;
-
-    }
-
-    .table {
-      display: inline-block;
-    }
-
-    .dab {
-      background: rgba(0, 0, 0, 0.3);
-      color: blue;
-    }
-
-    #navBar img {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-    .center{
-      align-self: center;
-      right: -100;
-    }
-    .form-control::placeholder, 
-    select.form-control { 
-      color: white;
-    }
-
-    [type="text"], select.form-control{
-      background-color: rgba(165, 171, 157, 0.2);
-    }
-  </style>
+  <script src="RetrieveSQLData.js"></script>
+  
+  <!-- script begins -->
   <script>
 
+    // Hiding the thank you message when the page loads
     $(document).ready(function () {
       $("#test11").hide();
     });
 
+    // Gets the Agents list data from node.js server to the HTML document
     getHttpRequest("/agentsdata", (data) => {
       var sqldata = JSON.parse(data);
+
+      // create elements inside the loop to display the agents contact list
       for (var i = 0; i < sqldata.length; i++) {
-        //document.getElementById("testing").innerText = sqldata[i].AgtFirstName;
         var node = document.createElement("h4");
         var textnode = document.createTextNode(sqldata[i].AgtFirstName + " " + sqldata[i].AgtLastName);
         node.appendChild(textnode);
@@ -84,25 +55,19 @@
         var element = document.getElementById("test");
         element.appendChild(node);
         element.appendChild(nodeBr)
-        // var element1 = document.getElementById("test1")
-        // element1.appendChild(nodeBr);
-
-
-        /* var node1 = document.createTextNode("p");
-        var textnode1 = document.createTextNode("Phone: " + sqldata[i].AgtBusPhone + " " + "Email: " + sqldata[i].AgtEmail);
-        node1.appendChild(textnode1);
-        var element1 = document.getElementById("test1");
-        element1.appendChild(node1); */
       }
     });
+
+    // once the message is sent, we switch the visibility of the thanks message
     function swap() {
       $("#test11").show();
       $("#form1").hide();
     }
   </script>
-
-
+  <!-- script ends -->
+  <!-- script begins -->
   <script>
+    // validates the email id of the user before sending the message
     function ValidateEmail(inputText) {
       var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
       if (inputText.value.match(mailformat)) {
@@ -117,25 +82,28 @@
       }
     }
   </script>
+  <!-- script ends -->
 </head>
+
+<!-- body section -->
 
 <body onload="document.form1.text1.focus()">
   <section id="navBar"></section>
+  <!-- keeping the container few pixels away from the navbar -->
   <div>
     <br />
   </div>
+
+  <!-- container begins, contains the form to send the message -->
   <div class="container">
     <div class="row">
       <div class="col-sm">
-        <!-- <form method="POST" class="name1" name="form1" style="position: relative;" action="/send_form"> -->
 
         <form method="POST" class="name1" id="form1" name="form1" action="/send_form"><br />
 
-
-          <!-- <h2 style="position: relative;">Contact us:</h2> -->
           <h3>Contact us:</h3>
-
           <br />
+
           <input type="text" class="form-control dab" placeholder="Full Name" name="Full_Name" required /><br />
 
           <input type="text" class="form-control" placeholder="Email ID" name="EmailId" required /><br />
@@ -149,17 +117,21 @@
             <option value="General Inquiry">General Inquiry</option>
             <option value="Payment Issues">Payment Issues</option>
             <option value="Flight Confirmation">Flight Confirmation</option>
+            <option value="Flight Booking">Flight Booking</option>
+            <option value="Missed Flight">Missed Flight</option>
+            <option value="Insurance">Insurance</option>
+            <option value="Special Assistance">Special Assistance</option>
             <option value="Other">Other</option>
           </select><br />
-          <input type="submit" value="Send Form" class="btn btn-primary"
+
+          <input type="submit" value="Send Form" class="btn btn-danger"
             onclick="return ValidateEmail(document.form1.EmailId)" /><br /><br>
         </form>
+        <!-- Thank you message, once the send button is clicked -->
         <h3 id="test11">Thank you. We will contact you within 24 Hours.</h3>
       </div>
 
-
-
-
+      <!-- Headquarters and Branch Location and Conatact Info -->
       <div class="col-sm center">
         <h3>Headquarters:</h3>
         <a href="https://www.google.ca/maps/place/SAIT/@51.0640303,-114.0907061,17z/data=!3m1!4b1!4m5!3m4!1s0x53716f9268a69e81:0xb1db5e68bd61e28!8m2!3d51.0640269!4d-114.0885174"
@@ -178,9 +150,11 @@
     </div>
   </div>
   <br />
+
+  <!-- Agents contact list -->
   <div class="container">
     <h3>Agent Contact List:</h3>
-    <h4 id="test"></h4>
+    <h4 id="test"><i class="material-icons" style="font-size:36px">person</i></h4>
   </div>
 
 </body>

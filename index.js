@@ -166,18 +166,18 @@ app.listen(8000, err => {
 //Code Author: Rohit
 app.post("/send_form", (req, res) => {
     var data = [];
-    console.log(req.body);
+    //console.log(req.body);
     data[0] = req.body.Full_Name;
     data[1] = req.body.Phone;
     data[2] = req.body.City;
     data[3] = req.body.EmailId;
     data[4] = req.body.Reason;
-    console.log("Connected to SQL Database.");
+    //console.log("Connected to SQL Database.");
     var sql =
       "INSERT INTO contact (Full_Name, Phone, City, EmailId, Reason) VALUES (?,?,?,?,?)";
     conn.query(sql, data, (err, result, fields) => {
       if (err) throw err;
-      console.log(result);
+      //console.log(result);
       
     });
   });
