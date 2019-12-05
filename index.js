@@ -2,6 +2,11 @@ const express = require('express');
 const app = express();
 const mysql = require("mysql");
 
+process.on('uncaughtException', function (err) {
+    console.error(err);
+    console.log("Node NOT Exiting...");
+  });
+
 //const bodyParser = require("body-parser");
 
 var conn = mysql.createConnection({
@@ -47,9 +52,9 @@ app.get('/getVacationPackages', function (req, res) {
 //Code Author: Zoha
 app.get("/packagedata", (req, res) => {
 	var data1;
-	conn.query("SELECT * FROM packages", (err, result) => {
+	conn.query("SELECT * FROM packages WHERE `PkgStartDate`>= CURRENT_DATE", (err, result) => {
 		if (err) throw err;
-		console.log(result);
+		//console.log(result);
 		res.send(result);
 	});
 	
@@ -70,7 +75,7 @@ app.get("/agentsdata", (req, res) => {
 
 app.post("/post_form", (req, res) => {
     var data = [];
-    console.log(req.body);
+    //console.log(req.body);
     data[0] = req.body.custFirstName;
     data[1] = req.body.custLastName;
     data[2] = req.body.custAddress;
@@ -94,16 +99,14 @@ app.post("/post_form", (req, res) => {
 
     conn.query(userNameQuery, data, (err, results, fields) => {
         if (err) throw console.log(err);
-        console.log(results);
+        //console.log(results);
         if (results.length > 0) {
             console.log("Username already exists");
         } else {
             conn.query(sqlInsert, data, (err, result, fields) => {
                 if (err) throw err;
-                console.log(result);
-                conn.end(err => {
-                    if (err) throw err;
-                });
+               // console.log(result);
+              
                 console.log("Account Registered for Username: " + req.body.UserName);
             });
         }
@@ -113,14 +116,14 @@ app.post("/post_form", (req, res) => {
 
 // Code author: Bilal
 app.post("/post_loginForm", (req, res) => {
-    console.log(req.body);
+   // console.log(req.body);
     var UserName = req.body.uNameLogin;
     var Password = req.body.passwordLogin;
 
 
     conn.query("SELECT * FROM customers WHERE `UserName` = ? AND `UserPassword` = ?", [UserName, Password], (err, results, fields) => {
         if (err) {
-            console.log("Error occured in conn.query");
+            throw err;
         } else {
             if (results.length > 0) {
                 console.log("login Successful");
