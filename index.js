@@ -52,7 +52,7 @@ app.get('/getVacationPackages', function (req, res) {
 //Code Author: Zoha
 app.get("/packagedata", (req, res) => {
 	var data1;
-	conn.query("SELECT * FROM packages", (err, result) => {
+	conn.query("SELECT * FROM packages WHERE `PkgStartDate`>= CURRENT_DATE", (err, result) => {
 		if (err) throw err;
 		//console.log(result);
 		res.send(result);
