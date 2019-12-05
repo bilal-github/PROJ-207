@@ -22,7 +22,7 @@
             console.log("in swap");
             $("#booking_form").hide();
             $("#replacement").show();
-            
+
         }
 
         function myFunction(i) {
@@ -42,7 +42,7 @@
 
         body {
             background-image: url("./images/contactBackground.jpg");
-            background-size:cover;
+            background-size: cover;
         }
 
         #mainPage {
@@ -54,7 +54,7 @@
             color: white;
         }
 
-        #benefits {
+        .benefits {
             background-color: rgb(0, 0, 0, 0.5);
         }
     </style>
@@ -242,17 +242,17 @@
                                     </div>
                                     <div class="col-10">
                                         <ul class="hi">
-                                            <li class="list-group-item font-weight-bold border-0 font-italic"
-                                                class="benefits">Vacation
+                                            <li class="list-group-item font-weight-bold border-0 font-italic benefits"
+                                                >Vacation
                                                 Includes:</li>
-                                            <li class="list-group-item text-info font-weight-bold border-0"
-                                                class="benefits">Private
+                                            <li class="list-group-item text-info font-weight-bold border-0 benefits"
+                                                >Private
                                                 ground transportation to and from resort</li>
-                                            <li class="list-group-item text-info font-weight-bold border-0"
-                                                class="benefits">
+                                            <li class="list-group-item text-info font-weight-bold border-0 benefits"
+                                                >
                                                 Accommodations at Hyatt Ziva Cap Cana</li>
-                                            <li class="list-group-item text-info font-weight-bold border-0"
-                                                class="benefits">Hotel taxes
+                                            <li class="list-group-item text-info font-weight-bold border-0 benefits"
+                                                >Hotel taxes
                                                 and gratuities</li>
                                         </ul>
 
@@ -279,7 +279,8 @@
                                     <!--Booking Form Column Heading Ends-->
                                     <div class="col">
                                         <!--Booking Form Column Starts-->
-                                        <h4 id="replacement" style="text-align: center;" class="benefits"> Submitted</h4>
+                                        <h4 id="replacement" style="text-align: center;" class="benefits"> Submitted
+                                        </h4>
                                         <div class="booking_form" id="booking_form">
                                             <form method="POST" action="/post_Vacationform">
                                                 <label>First Name</label>
