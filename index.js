@@ -144,8 +144,8 @@ app.post("/post_Vacationform", (req, res)=>{
 	data[1] = req.body.LastName;
 	data[2] = req.body.PhoneNumber;
 	data[3] = req.body.email;
-	data[4] = req.body.PacakageName;
-	data[5] = req.body.PacakagePrice;
+	data[4] = req.body.PackageName;
+	data[5] = req.body.PackagePrice;
 	data[6] = req.body.BookingDate;
 
 	
