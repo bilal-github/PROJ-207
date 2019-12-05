@@ -29,7 +29,7 @@ Assignment:  Thread Project - TERM 1
   <script src="../js/navBarHTML.js"></script>
   <script src="selectfromcontact.js"></script>
   <script src="RetrieveSQLData.js"></script>
-  
+
   <!-- script begins -->
   <script>
 
@@ -44,13 +44,18 @@ Assignment:  Thread Project - TERM 1
 
       // create elements inside the loop to display the agents contact list
       for (var i = 0; i < sqldata.length; i++) {
+        
         var node = document.createElement("h4");
-        var textnode = document.createTextNode(sqldata[i].AgtFirstName + " " + sqldata[i].AgtLastName);
+        node.setAttribute("class","sourceText fa fa-user");
+        $(node.sourceText).append('<i class="fa fa-user"></i>');
+        var textnode = document.createTextNode(" " + sqldata[i].AgtFirstName + " " + sqldata[i].AgtLastName + " ");
         node.appendChild(textnode);
 
         var nodeBr = document.createElement("h6");
-        var textnode1 = document.createTextNode("Phone: " + sqldata[i].AgtBusPhone + " " + "Email: " + sqldata[i].AgtEmail);
+        var textnode1 = document.createTextNode(" " + "Phone: " + sqldata[i].AgtBusPhone + " ");
+        var textnode2 = document.createTextNode(" " + "Email: " + sqldata[i].AgtEmail);
         nodeBr.appendChild(textnode1);
+        nodeBr.appendChild(textnode2);
 
         var element = document.getElementById("test");
         element.appendChild(node);
@@ -58,7 +63,7 @@ Assignment:  Thread Project - TERM 1
       }
     });
 
-    // once the message is sent, we switch the visibility of the thanks message
+    // once the message is sent, we switch the visibility to visible of thanks message
     function swap() {
       $("#test11").show();
       $("#form1").hide();
@@ -101,7 +106,7 @@ Assignment:  Thread Project - TERM 1
 
         <form method="POST" class="name1" id="form1" name="form1" action="/send_form"><br />
 
-          <h3>Contact us:</h3>
+          <h3 style="color: deepskyblue;">Contact us:</h3>
           <br />
 
           <input type="text" class="form-control dab" placeholder="Full Name" name="Full_Name" required /><br />
@@ -124,7 +129,7 @@ Assignment:  Thread Project - TERM 1
             <option value="Other">Other</option>
           </select><br />
 
-          <input type="submit" value="Send Form" class="btn btn-danger"
+          <input type="submit" value="Send" class="btn btn-success"
             onclick="return ValidateEmail(document.form1.EmailId)" /><br /><br>
         </form>
         <!-- Thank you message, once the send button is clicked -->
@@ -153,10 +158,14 @@ Assignment:  Thread Project - TERM 1
 
   <!-- Agents contact list -->
   <div class="container">
-    <h3>Agent Contact List:</h3>
-    <h4 id="test"><i class="material-icons" style="font-size:36px">person</i></h4>
+    <h3 style="color: deepskyblue;">Agents Contact List:</h3>
+    <h4 id="test"></h4>
   </div>
 
+  <!-- Footer begins -->
+  <footer style="text-align: center; color: azure;">
+    <p class="copyright">Copyright &copy; 2019</p>
+  </footer>
 </body>
 
 </html>
