@@ -7,11 +7,6 @@ body {
     width: 1.5rem;
     height: 1.5rem;
 }
-#navBar .aLogo {
-    font-family: 'Modak', cursive;
-    font-size: 40px;
-    color: white;
-}
 
 #introBtn {
     /* hide and position button prior to transitioning in and being displayed */
