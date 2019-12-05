@@ -19,8 +19,10 @@
 
     <script>
         function swap() {
+            console.log("in swap");
             $("#booking_form").hide();
             $("#replacement").show();
+            
         }
 
         function myFunction(i) {
@@ -241,16 +243,16 @@
                                     <div class="col-10">
                                         <ul class="hi">
                                             <li class="list-group-item font-weight-bold border-0 font-italic"
-                                                id="benefits">Vacation
+                                                class="benefits">Vacation
                                                 Includes:</li>
                                             <li class="list-group-item text-info font-weight-bold border-0"
-                                                id="benefits">Private
+                                                class="benefits">Private
                                                 ground transportation to and from resort</li>
                                             <li class="list-group-item text-info font-weight-bold border-0"
-                                                id="benefits">
+                                                class="benefits">
                                                 Accommodations at Hyatt Ziva Cap Cana</li>
                                             <li class="list-group-item text-info font-weight-bold border-0"
-                                                id="benefits">Hotel taxes
+                                                class="benefits">Hotel taxes
                                                 and gratuities</li>
                                         </ul>
 
@@ -277,7 +279,7 @@
                                     <!--Booking Form Column Heading Ends-->
                                     <div class="col">
                                         <!--Booking Form Column Starts-->
-                                        <h4 id="replacement" style="text-align: center;" id="benefits"> Submitted</h4>
+                                        <h4 id="replacement" style="text-align: center;" class="benefits"> Submitted</h4>
                                         <div class="booking_form" id="booking_form">
                                             <form method="POST" action="/post_Vacationform">
                                                 <label>First Name</label>
@@ -290,10 +292,10 @@
                                                 <input type="text" class="form-control" name="email"
                                                     required="required">
                                                 <label>Package Name</label>
-                                                <input type="text" class="form-control" name="packageName" required
+                                                <input type="text" class="form-control" name="PackageName" required
                                                     id="PackageName">
                                                 <label>package Price</label>
-                                                <input type="text" class="form-control" name="packagePrice" required
+                                                <input type="text" class="form-control" name="PackagePrice" required
                                                     id="PackagePrice">
                                                 <label>Booking Date</label>
                                                 <input type="date" class="form-control" name="BookingDate" id="date"
