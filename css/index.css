@@ -7,11 +7,6 @@ body {
     width: 1.5rem;
     height: 1.5rem;
 }
-#navBar .aLogo {
-    font-family: 'Modak', cursive;
-    font-size: 40px;
-    color: white;
-}
 
 #introBtn {
     /* hide and position button prior to transitioning in and being displayed */
@@ -19,14 +14,14 @@ body {
     transition: opacity 3s, margin-top 3s;
     opacity: 0;
     color: cornsilk;
-    font-family: 'Amatic SC', cursive;
-    font-size: 3.5rem;
+    font-family: cursive;
+    font-size: 2.5rem;
     font-weight: bold;
     border-radius: 10px;
 }
 
 #introText {
-    font-family: 'Indie Flower', cursive;
+     font-family: 'Indie Flower', cursive; 
 }
 
 .introTextCol {
@@ -43,11 +38,11 @@ body {
 /* Large Screens - Targetted: Desktops/Laptops */
 @media screen and (min-width: 1024px) {
     #introText {
-        margin-top: 1.3rem;
+        margin-top: 5rem;
         font-size: 4.5rem;
     }
     #introBtn {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     }
 }
 
@@ -71,7 +66,7 @@ body {
         font-size: 2rem;
     }
     #introBtn {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
     }
     #introImage {
         width: 300%;
@@ -89,9 +84,5 @@ body {
     #introImage {
         width: 300%;
         margin-left: -100%;
-    }
-
-    #introBtn {
-        font-size: 2.5rem;
     }
 }
