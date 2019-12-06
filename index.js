@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mysql = require("mysql");
+// const alert = require('alert-node');
 
 process.on('uncaughtException', function (err) {
     console.error(err);
@@ -106,7 +107,7 @@ app.post("/post_form", (req, res) => {
             conn.query(sqlInsert, data, (err, result, fields) => {
                 if (err) throw err;
                // console.log(result);
-              
+            //   alert("Account Registered for Username: " + req.body.UserName);
                 console.log("Account Registered for Username: " + req.body.UserName);
             });
         }
