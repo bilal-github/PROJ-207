@@ -19,9 +19,9 @@
 
     <script>
         function swap() {
-            console.log("in swap");
-            $("#booking_form").hide();
             $("#replacement").show();
+            $("#booking_form1").hide();
+
 
         }
 
@@ -242,17 +242,16 @@
                                     </div>
                                     <div class="col-10">
                                         <ul class="hi">
-                                            <li class="list-group-item font-weight-bold border-0 font-italic benefits"
-                                                >Vacation
+                                            <li class="list-group-item font-weight-bold border-0 font-italic benefits">
+                                                Vacation
                                                 Includes:</li>
-                                            <li class="list-group-item text-info font-weight-bold border-0 benefits"
-                                                >Private
+                                            <li class="list-group-item text-info font-weight-bold border-0 benefits">
+                                                Private
                                                 ground transportation to and from resort</li>
-                                            <li class="list-group-item text-info font-weight-bold border-0 benefits"
-                                                >
+                                            <li class="list-group-item text-info font-weight-bold border-0 benefits">
                                                 Accommodations at Hyatt Ziva Cap Cana</li>
-                                            <li class="list-group-item text-info font-weight-bold border-0 benefits"
-                                                >Hotel taxes
+                                            <li class="list-group-item text-info font-weight-bold border-0 benefits">
+                                                Hotel taxes
                                                 and gratuities</li>
                                         </ul>
 
@@ -279,38 +278,43 @@
                                     <!--Booking Form Column Heading Ends-->
                                     <div class="col">
                                         <!--Booking Form Column Starts-->
-                                        <h4 id="replacement" style="text-align: center;" class="benefits"> Submitted
+                                        <h4 id="replacement"
+                                            style="text-align: center; background-color: rgb(0,0,0,0);"> Submitted
                                         </h4>
-                                        <div class="booking_form" id="booking_form">
-                                            <form method="POST" action="/post_Vacationform">
+                                        <div class="booking_form" id="booking_form1">
+                                            <form method="POST" action="/post_Vacationform" onsubmit="swap()">
                                                 <label>First Name</label>
-                                                <input type="text" class="form-control" name="FirstName" required>
+                                                <input type="text" class="form-control" name="FirstName" required/>
                                                 <label>Last Name</label>
-                                                <input type="text" class="form-control" name="LastName" required>
+                                                <input type="text" class="form-control" name="LastName" required/>
                                                 <label>Contact Number</label>
-                                                <input type="text" class="form-control" name="PhoneNumber" required>
+                                                <input type="text" class="form-control" name="PhoneNumber" required/>
                                                 <label>Email</label>
                                                 <input type="text" class="form-control" name="email"
-                                                    required="required">
+                                                    required="required"/>
                                                 <label>Package Name</label>
                                                 <input type="text" class="form-control" name="PackageName" required
-                                                    id="PackageName">
+                                                    id="PackageName"/>
                                                 <label>package Price</label>
                                                 <input type="text" class="form-control" name="PackagePrice" required
-                                                    id="PackagePrice">
+                                                    id="PackagePrice"/>
                                                 <label>Booking Date</label>
                                                 <input type="date" class="form-control" name="BookingDate" id="date"
-                                                    required>
-                                                <script>
+                                                    required/>
+                                                                        <script>
                                                     let today = new Date().toISOString().substr(0, 10);
                                                     document.querySelector("#date").value = today;
 
-                                                </script>
-
+                                                </script></br/>
+                                                <input type="submit" value="Book" class="btn btn-primary pt-2" style="width: 100%"
+                                                     /><br /><br>
                                                 <div class="input-grp">
-                                                    <button type="submit" class="btn btn-primary flight"
+                                                    <!-- <button type="submit" class="btn btn-primary"
                                                         onsubmit="swap()">Book
-                                                        Package</button>
+                                                        Package</button> -->
+
+
+
                                                 </div>
 
                                             </form>
