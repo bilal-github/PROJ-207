@@ -1,3 +1,5 @@
+/* Author: Bilal */
+/* css for the registration page */
 #header {
     display: flex;
   }
@@ -68,9 +70,6 @@
 
 .form-control::placeholder { color: white;}
 
-  
-
-
   div.padded::after {
     padding: 50px;
   }
@@ -104,16 +103,6 @@
     background-color: rgb(112, 128, 144);
     color: white;
     border-color: rgb(112, 128, 144);
-  }
-
-  .nav-link {
-    color: rgb(87, 83, 83);
-    font-weight: bolder;
-  }
-
-  .nav-link:hover {
-    background-color: rgba(169, 175, 175, 0.219);
-    color: grey;
   }
 
   #myTabs {

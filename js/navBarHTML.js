@@ -8,16 +8,16 @@ $(document).ready(function() {
     </button>\
     <div class="collapse navbar-collapse" id="collapsibleNavbar" >\
         <div class="navbar-nav" width="100%">\
-                <a class="nav-link" href="index.html">\
+                <a class="nav-link" href="index.html" style="font-weight: bold">\
                 <img src="plane.png">\
                 Home</a>\
-                <a class="nav-link" href="Contact.html">\
+                <a class="nav-link" href="Contact.html" style="font-weight: bold">\
                 <img src="card.png">\
                 Contact Us</a>\
-                <a class="nav-link" href="Vacation.html">\
+                <a class="nav-link" href="Vacation.html" style="font-weight: bold">\
                 <img src="book.png">\
                 Book Vacation</a>\
-                <a class="nav-link" href="Registration.html">\
+                <a class="nav-link" href="Registration.html" style="font-weight: bold">\
                 <img src="register.png">\
                 Sign Up</a>\
         </div>\

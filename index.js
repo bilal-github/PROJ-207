@@ -6,9 +6,7 @@ const alert = require('alert-node');
 process.on('uncaughtException', function (err) {
     console.error(err);
     console.log("Node NOT Exiting...");
-  });
-
-//const bodyParser = require("body-parser");
+});
 
 var conn = mysql.createConnection({
     host: "localhost",
@@ -29,7 +27,6 @@ app.use(express.static("images"));
 app.use(express.static("js"));
 app.use(express.static("css"));
 app.use(express.urlencoded({ extended: true }));
-// app.use(bodyParser.urlencoded({ extended: true }));
 
 //Code Author: Brian
 //serves out the index page 
@@ -52,31 +49,24 @@ app.get('/getVacationPackages', function (req, res) {
 
 //Code Author: Zoha
 app.get("/packagedata", (req, res) => {
-	var data1;
-	conn.query("SELECT * FROM packages WHERE `PkgStartDate`>= CURRENT_DATE", (err, result) => {
-		if (err) throw err;
-		//console.log(result);
-		res.send(result);
-	});
-	
+    var data1;
+    conn.query("SELECT * FROM packages WHERE `PkgStartDate`>= CURRENT_DATE", (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+
 });
 //Code Author: Rohit
 app.get("/agentsdata", (req, res) => {
-    conn.query("SELECT AgtFirstName, AgtLastName, AgtBusPhone, AgtEmail, AgtPosition FROM agents", function(err, result) {
-      if (err) throw err;
-      res.send(result);
+    conn.query("SELECT AgtFirstName, AgtLastName, AgtBusPhone, AgtEmail, AgtPosition FROM agents", function (err, result) {
+        if (err) throw err;
+        res.send(result);
     });
-  });
-
-// app.get("/CustomerRegistration", (req, res) => {
-//     res.sendFile("/CustomerRegistration");
-// });
+});
 
 // Code author: Bilal 
-
 app.post("/post_form", (req, res) => {
     var data = [];
-    //console.log(req.body);
     data[0] = req.body.custFirstName;
     data[1] = req.body.custLastName;
     data[2] = req.body.custAddress;
@@ -90,8 +80,6 @@ app.post("/post_form", (req, res) => {
     data[10] = req.body.UserName;
     data[11] = req.body.userPassword;
 
-
-
     var userNameQuery = "SELECT `UserName` FROM customers WHERE `UserName` = '" + req.body.UserName + "'";
     var sqlInsert =
         "INSERT INTO `customers`(`CustFirstName`, `CustLastName`, `CustAddress`, `CustCity`, `CustProv`,"
@@ -100,14 +88,12 @@ app.post("/post_form", (req, res) => {
 
     conn.query(userNameQuery, data, (err, results, fields) => {
         if (err) throw console.log(err);
-        //console.log(results);
         if (results.length > 0) {
             console.log("Username already exists");
         } else {
             conn.query(sqlInsert, data, (err, result, fields) => {
                 if (err) throw err;
-               // console.log(result);
-              alert("Account Registered for Username: " + req.body.UserName);
+                alert("Account Registered for Username: " + req.body.UserName);
                 console.log("Account Registered for Username: " + req.body.UserName);
             });
         }
@@ -117,7 +103,6 @@ app.post("/post_form", (req, res) => {
 
 // Code author: Bilal
 app.post("/post_loginForm", (req, res) => {
-   // console.log(req.body);
     var UserName = req.body.uNameLogin;
     var Password = req.body.passwordLogin;
 
@@ -138,29 +123,25 @@ app.post("/post_loginForm", (req, res) => {
 });
 
 //Code Author: Zoha
-app.post("/post_Vacationform", (req, res)=>{
-	var data=[];
-	console.log(req.body);
-	data[0] = req.body.FirstName;
-	data[1] = req.body.LastName;
-	data[2] = req.body.PhoneNumber;
-	data[3] = req.body.email;
-	data[4] = req.body.PackageName;
-	data[5] = req.body.PackagePrice;
-	data[6] = req.body.BookingDate;
-
-	
+app.post("/post_Vacationform", (req, res) => {
+    var data = [];
+    console.log(req.body);
+    data[0] = req.body.FirstName;
+    data[1] = req.body.LastName;
+    data[2] = req.body.PhoneNumber;
+    data[3] = req.body.email;
+    data[4] = req.body.PackageName;
+    data[5] = req.body.PackagePrice;
+    data[6] = req.body.BookingDate;
 
 
-		var sql="INSERT INTO `tblpackagebooking`(`cfname`, `clname`, `cphone`, `cemail`, `cpackagename`, `cpackageprice`, `bkgdate`) VALUES (?,?,?,?,?,?,?)";
+    var sql = "INSERT INTO `tblpackagebooking`(`cfname`, `clname`, `cphone`, `cemail`, `cpackagename`, `cpackageprice`, `bkgdate`) VALUES (?,?,?,?,?,?,?)";
 
-		conn.query(sql, data, (err, result, fields)=>{
-			if (err) throw err;
-			console.log(result);
-		});
-		//res.send("<script>alert(\"test\")</script>");
-		//res.redirect("/thanks.html");
-	});	
+    conn.query(sql, data, (err, result, fields) => {
+        if (err) throw err;
+        console.log(result);
+    });
+});
 //Code Author: Brian
 app.listen(8000, err => {
     if (err) throw err;
@@ -170,18 +151,14 @@ app.listen(8000, err => {
 //Code Author: Rohit
 app.post("/send_form", (req, res) => {
     var data = [];
-    //console.log(req.body);
     data[0] = req.body.Full_Name;
     data[1] = req.body.Phone;
     data[2] = req.body.City;
     data[3] = req.body.EmailId;
     data[4] = req.body.Reason;
-    //console.log("Connected to SQL Database.");
     var sql =
-      "INSERT INTO contact (Full_Name, Phone, City, EmailId, Reason) VALUES (?,?,?,?,?)";
+        "INSERT INTO contact (Full_Name, Phone, City, EmailId, Reason) VALUES (?,?,?,?,?)";
     conn.query(sql, data, (err, result, fields) => {
-      if (err) throw err;
-      //console.log(result);
-      
+        if (err) throw err;
     });
-  });
+});

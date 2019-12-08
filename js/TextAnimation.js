@@ -3,7 +3,7 @@
  * COURSE: CPRG-210-OSD
  * ASSIGNMENT: THREADED PROJECT - TERM 1
  * @author: Brian Appleton
- * @description: a class for creating typing effects and cursor blinking effects
+ * @description: for creating typing effects and cursor blinking effects
  */
 
 /**
