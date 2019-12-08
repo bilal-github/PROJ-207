@@ -41,12 +41,13 @@ function textTyping(id, text, milliseconds, callback, callback2) {
  * @param {String} id the id of the element where the blinking cursor will appear
  * @param {String} runTime length of time in milliseconds the function lasts
  * @param {Function} callback
- * @description creates a blinking cursor effect on a given string for a specified time period in milliseconds
+ * @description creates a blinking cursor effect on a given element for a specified time period in milliseconds
  */
 function blinkingCursor(id, runTime, callback) {
     var localMilliseconds = 400;
     var millisecondsPassed = 0;
     
+
     var timer = setInterval(() => {
         millisecondsPassed += localMilliseconds;
         var text = document.getElementById(id).innerHTML;

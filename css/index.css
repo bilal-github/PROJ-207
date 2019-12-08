@@ -74,7 +74,7 @@ body {
 @media screen and (max-height: 840px) and (max-width: 420px) {
     #introText {
         margin-top: 2rem;
-        font-size: 2rem;
+        font-size: 3rem;
     }
     #introBtn {
         font-size: 1.5rem;
