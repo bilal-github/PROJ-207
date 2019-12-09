@@ -1,13 +1,28 @@
+/*
+DATE: Dec 08, 2019
+Author: Bilal 
+Author: Brian
+Author: Rohit
+Author: Zoha
+Description: Node file to handle all server communication for the website
+
+COURSE: CPRG-210-OSD
+ASSIGNMENT: THREAD PROJECT - TERM 1
+*/
+
+//import modules
 const express = require('express');
-const app = express();
 const mysql = require("mysql");
 const alert = require('alert-node');
+const app = express();
 
+//uncaughtexception incase an error occurs
 process.on('uncaughtException', function (err) {
     console.error(err);
     console.log("Node NOT Exiting...");
 });
 
+//stores connection in a variable
 var conn = mysql.createConnection({
     host: "localhost",
     user: "Bilal",
@@ -20,6 +35,7 @@ conn.connect((err) => {
     if (err) throw err;
 });
 
+//using the following directories
 app.use(express.static('./Views', { extensions: ['html'] }));
 app.use(express.static("./"));
 app.use(express.static("modules"));
@@ -38,7 +54,6 @@ app.get('/', function (req, res) {
 //Serves back the SQL PkgName column from the PACKAGES table in SQL
 app.get('/getVacationPackages', function (req, res) {
     var vacationData;
-
     var sqlState1 = "SELECT PkgDesc FROM packages"
 
     conn.query(sqlState1, (err, result, fields) => {
@@ -65,7 +80,9 @@ app.get("/agentsdata", (req, res) => {
 });
 
 // Code author: Bilal 
+// post after clicking register Button
 app.post("/post_form", (req, res) => {
+    //Creates data variable to hold all the inputs
     var data = [];
     data[0] = req.body.custFirstName;
     data[1] = req.body.custLastName;
@@ -80,19 +97,26 @@ app.post("/post_form", (req, res) => {
     data[10] = req.body.UserName;
     data[11] = req.body.userPassword;
 
+    //Query for finding the username in the database
     var userNameQuery = "SELECT `UserName` FROM customers WHERE `UserName` = '" + req.body.UserName + "'";
+
+    //Query for inserting current user into the database
     var sqlInsert =
         "INSERT INTO `customers`(`CustFirstName`, `CustLastName`, `CustAddress`, `CustCity`, `CustProv`,"
         + " `CustPostal`, `CustCountry`, `CustHomePhone`, `CustBusPhone`, `CustEmail`, `UserName`,`UserPassword`)"
         + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
+    //Checks if username exists in the database
     conn.query(userNameQuery, data, (err, results, fields) => {
         if (err) throw console.log(err);
+        //If username is found returns username exists
         if (results.length > 0) {
             console.log("Username already exists");
         } else {
+            //if username doesn't exist, inserts the current username into the database
             conn.query(sqlInsert, data, (err, result, fields) => {
                 if (err) throw err;
+                //alert is displayed to the user using alert-node 
                 alert("Account Registered for Username: " + req.body.UserName);
                 console.log("Account Registered for Username: " + req.body.UserName);
             });
@@ -102,19 +126,22 @@ app.post("/post_form", (req, res) => {
 });
 
 // Code author: Bilal
+// Post after clicking login Button
 app.post("/post_loginForm", (req, res) => {
     var UserName = req.body.uNameLogin;
     var Password = req.body.passwordLogin;
 
-
+    // Query for checking if username and password exists on the database
     conn.query("SELECT * FROM customers WHERE `UserName` = ? AND `UserPassword` = ?", [UserName, Password], (err, results, fields) => {
         if (err) {
             throw err;
         } else {
+            // if query returns with a matching result, it will redirect to index.html and consoles that login is successful
             if (results.length > 0) {
                 console.log("login Successful");
                 res.redirect("index");
             } else {
+            // if query returns empty, it will console with this:
                 console.log("Username not found: please register");
             }
         }

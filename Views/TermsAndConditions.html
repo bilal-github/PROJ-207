@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<!--
+
+DATE: Nov 19, 2019
+Author: Bilal Ahmad
+Description: Shows up when terms and conditions are clicked in registration form in registration.html
+
+COURSE: CPRG-210-OSD
+ASSIGNMENT: THREAD PROJECT - TERM 1
+
+-->
 <html>
 
 <head>
@@ -6,22 +16,27 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="../Modules/bootstrap.min.css"/>
-  <script src="../Modules/jquery.min.js"></script>
-  <script src="../Modules/popper.min.js"></script>
-  <script src="../Modules/bootstrap.min.js"></script>
+    <!-- Bootstrap, jquery, and popper imports -->
+    <link rel="stylesheet" href="../Modules/bootstrap.min.css" />
+    <script src="../Modules/jquery.min.js"></script>
+    <script src="../Modules/popper.min.js"></script>
+    <script src="../Modules/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container"><!--Class container to put it in the middle-->
         <h2><strong>Terms and Conditions</strong></h2>
-        <button onclick="self.close()" class="btn btn-danger " style="float:right; float:inline-end; position: sticky; top: 0%; right: 0; margin-right: 0%;">Close Window</button>
+        <!-- Exit button -->
+        <button onclick="self.close()" class="btn btn-danger "
+            style="float:right; float:inline-end; position: sticky; top: 0%; right: 0; margin-right: 0%;">Close
+            Window</button>
+        <!-- horizontal line with css -->
         <hr style="color: black; 
         border-width: 4px;
         border-style: inset;
         background-color: black;
         ">
-
+        <!-- start of Terms and Conditions -->
         <p>Welcome to Travel Experts!</p>
 
         <p>
@@ -308,6 +323,7 @@
             any nature.
         </p>
     </div>
+    <!-- End of Terms and Conditions -->
 </body>
 
 </html>

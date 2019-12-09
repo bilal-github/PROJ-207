@@ -1,5 +1,15 @@
-//Code Author Bilal
+/*
+DATE: Nov 19, 2019
+Author: Bilal Ahmad
+Description: Creates a navigation port which can be imported into an html page and will import itself into a section tag.
+
+COURSE: CPRG-210-OSD
+ASSIGNMENT: THREAD PROJECT - TERM 1
+*/
+
+//when the page loads perform this:
 $(document).ready(function() {
+  //Variable to hold the navbar html code
   var navBarHTML =
     '<nav class="navbar navbar-expand-md bg-dark navbar-dark">\
     <button class="navbar-toggler justify-content-end" type="button" data-toggle="collapse"\
@@ -23,5 +33,6 @@ $(document).ready(function() {
         </div>\
     </div>\
 </nav>';
+//The variable with html is appended to a section tag
   $("section").append(navBarHTML);
 });
